@@ -31,9 +31,21 @@ class SQLiteOperate(object):
         except Exception as e:
             QMessageBox.warning(self,'错误提示','初始化rundb数据库失败,{0}'.format(e))
 
+    # 定义连接.
+    def connect(self):
+        try:
+            connect = sqlite3.connect("rundb.db")
+            return connect
+
+        except Exception as e:
+            pass
+
+        finally:
+            pass
+
     # 定义SQLite3的游标.
     def execSql(self):
-        connect = sqlite3.connect("rundb.db")
+        connect = self.connect()
         try:
            cursor = connect.cursor()
            print('connect to database rundb successfully')
