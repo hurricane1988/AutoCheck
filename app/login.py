@@ -157,6 +157,7 @@ class loginWindow(QWidget,Ui_loginUi):
             password = cursor.execute("select password from user where username='admin'").fetchone()[0]
             if inputUserName == "admin" and inputPassWord == password:
                 QMessageBox.about(self,'欢迎登陆',MSG)
+                self.close()
             else:
                 QMessageBox.warning(self,'错误提示','输入的账号密码错误!',QMessageBox.Cancel)
             cursor.close()
