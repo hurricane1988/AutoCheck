@@ -8,7 +8,7 @@
 ######################################
 
 
-import sys,sqlite3
+import sys,sqlite3,hashlib,logging
 from PyQt5 import QtSql
 from PyQt5.QtSql import QSqlQuery
 from PyQt5.QtWidgets import QMessageBox
@@ -31,17 +31,34 @@ class SQLiteOperate(object):
         except Exception as e:
             QMessageBox.warning(self,'错误提示','初始化rundb数据库失败,{0}'.format(e))
 
-    def execSql(self,sql):
-
+    # 定义SQLite3的游标.
+    def execSql(self):
+        connect = sqlite3.connect("rundb.db")
         try:
-            self.query.exec(sql)
-            QMessageBox.about(self,None,'执行SQL{0}成功'.format(sql))
+           cursor = connect.cursor()
+           print('connect to database rundb successfully')
+           return cursor
 
         except Exception as e:
-            QMessageBox.warning(self,'错误提示','执行SQL语句{0}失败,错误信息{1}'.format(sql,e))
+           print('connect to database rundb failed,{0}'.format(e))
+           return False
 
         finally:
-            self.db.close()
+            pass
+
+    # MD5加密函数,用于对密码进行加密处理.
+    def md5Encrypt(self,msg):
+        try:
+            plainText = hashlib.md5(msg.encode())
+            cipherText = plainText.hexdigest()
+            return cipherText
+
+        except Exception as e:
+            logging.error('加密字符串{0}失败，{1}'.format(msg,e))
+
+        finally:
+            pass
+
 
 
 
