@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 # 初始化SQLite3数据库类.
 class SQLiteOperate(object):
-    def __init__(self, dbname='rundb.db'):
+    def __init__(self, dbname='.rundb.db'):
         self.dbname = dbname
         self.query = QSqlQuery()
         try:

@@ -154,7 +154,7 @@ class loginWindow(QWidget,Ui_loginUi):
         try:
             self.createUserTable()
             cursor = self.dbClient.execSql()
-            password = cursor.execute("select password from user where username='admin'").fetchone()[0]
+            password = cursor.execute("select password from t_user where username='admin'").fetchone()[0]
             if inputUserName == "admin" and inputPassWord == password:
                 QMessageBox.about(self,'欢迎登陆',MSG)
                 self.close()
