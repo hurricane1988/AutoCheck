@@ -6,7 +6,7 @@
 # FileName: test.py
 
 
-
+"""
 import sqlite3
 
 conn = sqlite3.connect('rundb.db')
@@ -32,4 +32,15 @@ password = c.execute("select password from user where username='admin'").fetchon
 #password = [row[2]for row in data][0]
 print(type(password))
 c.close()
+"""
 
+import hashlib
+
+s = '华信永道'
+m = hashlib.md5(s.encode('utf-8'))
+a = m.hexdigest()
+
+byte16 = m.hexdigest()[8:-8]
+print(a)
+print(a.upper().lower())
+print(byte16)

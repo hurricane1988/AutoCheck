@@ -117,6 +117,7 @@ class Ui_MD5(object):
     def retranslateUi(self, MD5):
         _translate = QtCore.QCoreApplication.translate
         MD5.setWindowTitle(_translate("MD5", "MD5加密"))
+        MD5.setWindowIcon(QtGui.QIcon('login.ico'))
         self.groupBoxMD5.setTitle(_translate("MD5", "MD5加密"))
         self.labelInputString.setText(_translate("MD5", "要加密的字符串:"))
         self.lineEditInput.setPlaceholderText(_translate("MD5", "请出入待加密的字符串！"))
@@ -139,4 +140,4 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     win = CallMD5()
     win.show()
-    sys.exit(app.exit())
+    sys.exit(app.exec())

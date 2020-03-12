@@ -12,6 +12,7 @@ import sys
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow,QMessageBox
 from mainwindow import Ui_MainWindow
+from CallMD5 import md5Encrypt
 
 
 class MyMainWindow(QMainWindow,Ui_MainWindow):
@@ -23,7 +24,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
 
         self.setupUi(self)                                                          # 调用显示窗口.
         self.actionAbout.triggered.connect(self.about_us)                           # 关于我们动作和about_us函数绑定.
-        self.actionMD5.triggered.connect(self.md5Encrypt)                           # MD5动作与MD5加密函数绑定.
+        self.actionMD5.triggered.connect(self.md5Encryptshow)                           # MD5动作与MD5加密函数绑定.
         #self.actionResetPassWord.triggered.connect(self.resetPassword)              # 密码重置动作和函数绑定.
 
     # 关于我们帮助文档说明.
@@ -46,7 +47,9 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         QMessageBox.about(self,'关于我们',MSG)
 
     # 密码重置函数.
-
+    def md5Encryptshow(self):
+        self.MD5 = md5Encrypt()
+        self.MD5.show()
 
 
 if __name__ == '__main__':
