@@ -7,7 +7,6 @@
 # WARNING! All changes made in this file will be lost!
 
 
-import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -75,6 +74,8 @@ class Ui_MainWindow(object):
         font.setPointSize(10)
         self.Check.setFont(font)
         self.Check.setObjectName("Check")
+        self.Setup = QtWidgets.QMenu(self.menubar)
+        self.Setup.setObjectName("Setup")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -88,8 +89,6 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
         self.actionNew = QtWidgets.QAction(MainWindow)
         font = QtGui.QFont()
-        font.setBold(False)
-        font.setWeight(50)
         self.actionNew.setFont(font)
         self.actionNew.setObjectName("actionNew")
         self.actionExport = QtWidgets.QAction(MainWindow)
@@ -118,6 +117,20 @@ class Ui_MainWindow(object):
         self.actionAddItem.setObjectName("actionAddItem")
         self.actionChangeItem = QtWidgets.QAction(MainWindow)
         self.actionChangeItem.setObjectName("actionChangeItem")
+        self.actionAbout = QtWidgets.QAction(MainWindow)
+        font = QtGui.QFont()
+        font.setFamily("华文中宋")
+        font.setPointSize(10)
+        self.actionAbout.setFont(font)
+        self.actionAbout.setObjectName("actionAbout")
+        self.actionResetPassWord = QtWidgets.QAction(MainWindow)
+        font = QtGui.QFont()
+        font.setFamily("华文中宋")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        self.actionResetPassWord.setFont(font)
+        self.actionResetPassWord.setObjectName("actionResetPassWord")
         self.File.addAction(self.actionNew)
         self.File.addAction(self.actionExport)
         self.File.addAction(self.actionCancel)
@@ -126,12 +139,15 @@ class Ui_MainWindow(object):
         self.Tool.addAction(self.actionPing)
         self.Tool.addAction(self.actionDNS)
         self.Tool.addAction(self.actionPublicIP)
+        self.Help.addAction(self.actionAbout)
         self.Check.addAction(self.actionSystemCheck)
         self.Check.addAction(self.actionDatabaseCheck)
         self.Check.addAction(self.actionMonitorReport)
+        self.Setup.addAction(self.actionResetPassWord)
         self.menubar.addAction(self.File.menuAction())
         self.menubar.addAction(self.Check.menuAction())
         self.menubar.addAction(self.Tool.menuAction())
+        self.menubar.addAction(self.Setup.menuAction())
         self.menubar.addAction(self.Help.menuAction())
         self.toolBar.addAction(self.actionProperty)
         self.toolBar.addAction(self.actionAddItem)
@@ -149,6 +165,7 @@ class Ui_MainWindow(object):
         self.Tool.setTitle(_translate("MainWindow", "工具"))
         self.Help.setTitle(_translate("MainWindow", "帮助"))
         self.Check.setTitle(_translate("MainWindow", "巡检"))
+        self.Setup.setTitle(_translate("MainWindow", "设置"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
         self.actionNew.setText(_translate("MainWindow", "新建"))
         self.actionNew.setToolTip(_translate("MainWindow", "新建文件"))
@@ -182,6 +199,7 @@ class Ui_MainWindow(object):
         self.actionAddItem.setShortcut(_translate("MainWindow", "Alt+A"))
         self.actionChangeItem.setText(_translate("MainWindow", "信息变更"))
         self.actionChangeItem.setShortcut(_translate("MainWindow", "Alt+C"))
-
-
-
+        self.actionAbout.setText(_translate("MainWindow", "关于我们"))
+        self.actionAbout.setShortcut(_translate("MainWindow", "Ctrl+Z"))
+        self.actionResetPassWord.setText(_translate("MainWindow", "密码重置"))
+        self.actionResetPassWord.setShortcut(_translate("MainWindow", "Ctrl+G"))
