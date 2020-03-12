@@ -158,7 +158,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        #MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.groupBoxProperty.setTitle(_translate("MainWindow", "资产清单"))
         self.groupBoxGraph.setTitle(_translate("MainWindow", "资产报表"))
         self.File.setTitle(_translate("MainWindow", "文件"))
