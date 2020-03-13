@@ -34,13 +34,4 @@ print(type(password))
 c.close()
 """
 
-import hashlib
-
-s = '华信永道'
-m = hashlib.md5(s.encode('utf-8'))
-a = m.hexdigest()
-
-byte16 = m.hexdigest()[8:-8]
-print(a)
-print(a.upper().lower())
-print(byte16)
+import socket

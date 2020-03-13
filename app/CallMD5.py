@@ -33,9 +33,3 @@ class md5Encrypt(QtWidgets.QWidget,Ui_MD5):
 
         finally:
             pass
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    win = md5Encrypt()
-    win.show()
-    sys.exit(app.exec())

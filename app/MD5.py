@@ -127,17 +127,3 @@ class Ui_MD5(object):
         self.label16max.setText(_translate("MD5", "16位 大写"))
         self.label32min.setText(_translate("MD5", "32位 小写"))
         self.label32max.setText(_translate("MD5", "32位 大写"))
-
-
-class CallMD5(QtWidgets.QWidget,Ui_MD5):
-    def __init__(self, parent=None):
-        super(CallMD5, self).__init__(parent)
-
-        self.setupUi(self)
-
-if __name__ == '__main__':
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    win = CallMD5()
-    win.show()
-    sys.exit(app.exec())

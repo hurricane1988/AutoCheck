@@ -12,23 +12,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 from PyQt5.QtGui import QPixmap, QImage,QIcon
 from database.initdb import SQLiteOperate
+from Callmainwindow import MyMainWindow
 
 
-MSG = '''
-PyCharm 2019.3 (Professional Edition)
-Build #PY-193.5233.109, built on November 28, 2019
-Licensed to https://zhile.io
-You have a perpetual fallback license for this version
-Subscription is active until July 8, 2089
-Runtime version: 11.0.4+10-b520.11 amd64
-VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
-Windows 10 10.0
-GC: ParNew, ConcurrentMarkSweep
-Memory: 1945M
-Cores: 8
-Registry: 
-Non-Bundled Plugins: ru.meanmail.plugin.requirements
-'''
 class Ui_loginUi(object):
     def setupUi(self, loginUi):
         loginUi.setObjectName("loginUi")
@@ -106,7 +92,7 @@ class Ui_loginUi(object):
         self.labelUser.setText(_translate("loginUi", "用户名称"))
         self.labelPassword.setText(_translate("loginUi", "用户密码"))
 
-
+# 登录窗口主类.
 class loginWindow(QWidget,Ui_loginUi):
     def __init__(self, parent=None):
         super(loginWindow, self).__init__(parent)
@@ -124,17 +110,11 @@ class loginWindow(QWidget,Ui_loginUi):
     def center(self):
         SCREEN = QDesktopWidget().screenGeometry()
         SIZE = self.geometry()
-        self.move((SCREEN.width() - SIZE.width()) /2,
-                  (SCREEN.height() - SIZE.height()) /2)
+        self.move((SCREEN.width() - SIZE.width()) /2,(SCREEN.height() - SIZE.height()) /2)
 
     # 初始化用户登录表.
     def createUserTable(self):
-        createUser = '''
-        create table if not exists user
-        (id int primary key,
-        username varchar(20),
-        password varchar(20));
-        '''
+        createUser = 'create table if not exists user(id int primary key,username varchar(20),password varchar(20));'
         try:
             cursor = self.dbClient.execSql()
             cursor.execute(createUser)
@@ -147,17 +127,24 @@ class loginWindow(QWidget,Ui_loginUi):
         finally:
             pass
 
+    # 调用主窗口函数.
     def mainWindow(self):
-        inputUserName = self.lineEditUser.text()              # 获取lineEdit当前的值,即输入的用户名称.
+        inputUserName = self.lineEditUser.text()                                      # 获取lineEdit当前的值,即输入的用户名称.
         inputPassWord = self.dbClient.md5Encrypt(self.lineEditPassword.text())        # 获取lineEdit当前的值,并使用MD5加密.
 
         try:
             self.createUserTable()
             cursor = self.dbClient.execSql()
             password = cursor.execute("select password from t_user where username='admin'").fetchone()[0]
+
             if inputUserName == "admin" and inputPassWord == password:
-                QMessageBox.about(self,'欢迎登陆',MSG)
+                mywindows = MyMainWindow()
+                mywindows.show()
                 self.close()
+
+            elif inputUserName.strip() == '' or inputPassWord.strip() == '':   # 判断输入的账号或密码是否为空;
+                QMessageBox.warning(self, '错误提示', '账号密码或不能为空!', QMessageBox.Cancel)
+
             else:
                 QMessageBox.warning(self,'错误提示','输入的账号密码错误!',QMessageBox.Cancel)
             cursor.close()

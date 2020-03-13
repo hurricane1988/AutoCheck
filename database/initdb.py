@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 # 初始化SQLite3数据库类.
 class SQLiteOperate(object):
-    def __init__(self, dbname='.rundb.db'):
+    def __init__(self, dbname='rundb.db'):
         self.dbname = dbname
         self.query = QSqlQuery()
         try:
@@ -48,12 +48,12 @@ class SQLiteOperate(object):
         connect = self.connect()
         try:
            cursor = connect.cursor()
-           print('connect to database rundb successfully')
+           logging.info('连接数据库rundb成功')
            return cursor
 
         except Exception as e:
-           print('connect to database rundb failed,{0}'.format(e))
-           return False
+            logging.error('连接数据库rundb失败,{0}'.format(e))
+            return False
 
         finally:
             pass
@@ -70,8 +70,3 @@ class SQLiteOperate(object):
 
         finally:
             pass
-
-
-
-
-
