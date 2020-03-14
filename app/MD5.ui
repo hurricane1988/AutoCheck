@@ -43,7 +43,9 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(27, 27, 27);</string>
+    <string notr="true">color: rgb(27, 27, 27);
+background-color: lightgray;
+border-radius:5px;</string>
    </property>
    <property name="title">
     <string>MD5加密</string>
@@ -83,7 +85,8 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius:10px;</string>
+     <string notr="true">border-radius:10px;
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="placeholderText">
      <string>请出入待加密的字符串！</string>
@@ -104,7 +107,7 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(170, 255, 255);
 font: 75 11pt &quot;微软雅黑&quot;;
-border-radius:10px;</string>
+border-radius:5px;</string>
     </property>
     <property name="text">
      <string>加密</string>
@@ -144,6 +147,10 @@ border-radius:10px;</string>
          <height>2</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius:5px;
+background-color: rgb(255, 255, 255);</string>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">
@@ -163,7 +170,12 @@ border-radius:10px;</string>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit16min"/>
+      <widget class="QLineEdit" name="lineEdit16min">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label16max">
@@ -179,7 +191,12 @@ border-radius:10px;</string>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit16max"/>
+      <widget class="QLineEdit" name="lineEdit16max">
+       <property name="styleSheet">
+        <string notr="true">border-radius:5px;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label32min">
@@ -195,7 +212,12 @@ border-radius:10px;</string>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit32min"/>
+      <widget class="QLineEdit" name="lineEdit32min">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+      </widget>
      </item>
      <item row="4" column="0">
       <widget class="QLabel" name="label32max">
@@ -211,7 +233,12 @@ border-radius:10px;</string>
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit32max"/>
+      <widget class="QLineEdit" name="lineEdit32max">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>

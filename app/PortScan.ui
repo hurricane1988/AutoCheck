@@ -31,6 +31,10 @@
    <property name="toolTip">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;格式为:IP/协议/端口&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;【Sample】&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;1. 192.168.10.100/TCP/80 #扫描该IP的TCP协议的80端口&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;2. 192.168.10.100/UDP/53 #扫描该IP的UDP协议的53端口&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:5px;
+background-color: lightgray;</string>
+   </property>
    <property name="title">
     <string>端口扫描</string>
    </property>
@@ -72,12 +76,15 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius:10px;
-background-color: rgb(170, 255, 127);
+     <string notr="true">border-radius:5px;
+background-color: rgb(255, 255, 255);
 font: 10pt &quot;Courier&quot;;</string>
     </property>
     <property name="placeholderText">
      <string>请输入待扫描IP地址</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonStart">
@@ -99,9 +106,10 @@ font: 10pt &quot;Courier&quot;;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:10px;
-font: 75 11pt &quot;微软雅黑&quot;;</string>
+     <string notr="true">background-color: rgb(85, 85, 127);
+border-radius:5px;
+font: 75 11pt &quot;微软雅黑&quot;;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>点击检查</string>
@@ -115,6 +123,13 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
       <width>501</width>
       <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:5px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>结果信息输出</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelScanIP">
@@ -143,12 +158,15 @@ font: 75 11pt &quot;微软雅黑&quot;;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius:10px;
-background-color: rgb(255, 170, 0);
+     <string notr="true">border-radius:5px;
+background-color: rgb(255, 255, 255);
 font: 10pt &quot;Courier&quot;;</string>
     </property>
     <property name="placeholderText">
      <string>请输入IP地址,如192.168.10.100</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonScanIP">
@@ -170,9 +188,10 @@ font: 10pt &quot;Courier&quot;;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 170, 0);
+     <string notr="true">background-color: rgb(85, 85, 127);
 font: 75 11pt &quot;微软雅黑&quot;;
-border-radius:10px;</string>
+border-radius:5px;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>点击扫描</string>

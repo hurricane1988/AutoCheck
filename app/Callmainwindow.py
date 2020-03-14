@@ -14,6 +14,7 @@ from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow,QMessageBox
 from mainwindow import Ui_MainWindow
 from CallMD5 import md5Encrypt
 from CallPortScan import portScanWindow
+from CallenterInfo import enterWindow
 
 
 class MyMainWindow(QMainWindow,Ui_MainWindow):
@@ -22,12 +23,14 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
 
         self.setWindowTitle('自助巡检GUI工具')                                        # 设置窗口标题.
         self.setWindowIcon(QIcon('login.ico'))                                      # 设置窗口的图标.
-
+        #self.setFixedSize()
         self.setupUi(self)                                                          # 调用显示窗口.
         self.actionAbout.triggered.connect(self.about_us)                           # 关于我们动作和about_us函数绑定.
         self.actionMD5.triggered.connect(self.md5Encryptshow)                       # MD5动作与MD5加密函数绑定.
         self.actionPortCheck.triggered.connect(self.portScanShow)
         #self.actionResetPassWord.triggered.connect(self.resetPassword)              # 密码重置动作和函数绑定.
+
+        self.actionAddItem.triggered.connect(self.enterInfo)
 
     # 关于我们帮助文档说明.
     def about_us(self):
@@ -58,6 +61,10 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.portscan = portScanWindow()
         self.portscan.show()
 
+    #
+    def enterInfo(self):
+        self.inputInfo = enterWindow()
+        self.inputInfo.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
