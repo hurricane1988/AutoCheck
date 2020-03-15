@@ -17,9 +17,6 @@ class enterWindow(QtWidgets.QWidget,Ui_enterInfo):
     def __init__(self, parent=None):
         super(enterWindow, self).__init__(parent)
 
-        self.connect = connect
-        self.cursor = cursor
-
         self.setupUi(self)
 
         self.pushButtonEntry.clicked.connect(self.ensureEntry)
@@ -49,8 +46,8 @@ class enterWindow(QtWidgets.QWidget,Ui_enterInfo):
                 QtWidgets.QMessageBox.warning(self,'错误提示','输入的IP地址为非法格式',QtWidgets.QMessageBox.Cancel)
 
             try:
-                self.cursor.execute("insert into t_server (ip,os,username,password,desc,type) values ('{}','{}','{}','{}','{}','{}')".format(self.IP,self.version,self.username,self.password,self.description,self.ostype))
-                self.connect.commit()
+                cursor.execute("insert into t_server (ip,os,username,password,desc,type) values ('{}','{}','{}','{}','{}','{}')".format(self.IP,self.version,self.username,self.password,self.description,self.ostype))
+                connect.commit()
                 QtWidgets.QMessageBox.information(self,'消息提示','成功录入信息',QtWidgets.QMessageBox.Cancel)
             except Exception as e:
                 QtWidgets.QMessageBox.warning(self,'错误提示',"信息录入失败\n'{0}".format(e),QtWidgets.QMessageBox.Cancel)
@@ -71,11 +68,3 @@ class enterWindow(QtWidgets.QWidget,Ui_enterInfo):
             QtWidgets.QMessageBox.warning(self, '错误提示', '密码为填写', QtWidgets.QMessageBox.Cancel)
         elif self.description == '':
             QtWidgets.QMessageBox.warning(self, '错误提示', '服务器用途未填写', QtWidgets.QMessageBox.Cancel)
-
-
-
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    win = enterWindow()
-    win.showMaximized()
-    sys.exit(app.exec())

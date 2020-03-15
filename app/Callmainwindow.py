@@ -15,6 +15,8 @@ from mainwindow import Ui_MainWindow
 from CallMD5 import md5Encrypt
 from CallPortScan import portScanWindow
 from CallenterInfo import enterWindow
+from CallChangePassword import resetPassWord
+from Configuration import *
 
 
 class MyMainWindow(QMainWindow,Ui_MainWindow):
@@ -31,24 +33,10 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         #self.actionResetPassWord.triggered.connect(self.resetPassword)              # 密码重置动作和函数绑定.
 
         self.actionAddItem.triggered.connect(self.enterInfo)
+        self.actionResetPassWord.triggered.connect(self.ResetPasswd)
 
     # 关于我们帮助文档说明.
     def about_us(self):
-        MSG = '''
-        PyCharm 2019.3 (Professional Edition)
-        Build #PY-193.5233.109, built on November 28, 2019
-        Licensed to https://zhile.io
-        You have a perpetual fallback license for this version
-        Subscription is active until July 8, 2089
-        Runtime version: 11.0.4+10-b520.11 amd64
-        VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
-        Windows 10 10.0
-        GC: ParNew, ConcurrentMarkSweep
-        Memory: 1945M
-        Cores: 8
-        Registry: 
-        Non-Bundled Plugins: ru.meanmail.plugin.requirements
-        '''
         QMessageBox.about(self,'关于我们',MSG)
 
     # 密码重置函数.
@@ -61,10 +49,15 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.portscan = portScanWindow()
         self.portscan.show()
 
-    #
+    # 信息录入主函数.
     def enterInfo(self):
         self.inputInfo = enterWindow()
         self.inputInfo.show()
+
+    # 密码重置主函数.
+    def ResetPasswd(self):
+        self.resetpassword = resetPassWord()
+        self.resetpassword.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
