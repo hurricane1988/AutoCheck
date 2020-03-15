@@ -4,3 +4,4 @@
 - Oracle/DB2数据库巡检
 - 巡检结果报表导出
 - GUI图形化界面形式
+- [pyecharts案例](https://github.com/pyecharts/pyecharts-gallery/tree/master/Bar)

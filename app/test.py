@@ -34,22 +34,32 @@ print(type(password))
 c.close()
 """
 
-import sqlite3
-from Configuration import *
 from pyecharts import options as opts
 from pyecharts.charts import Bar
+from pyecharts.commons.utils import JsCode
 from pyecharts.faker import Faker
-
 
 c = (
     Bar()
     .add_xaxis(Faker.choose())
-    .add_yaxis("商家A", Faker.values())
-    .add_yaxis("商家B", Faker.values())
-    .set_global_opts(
-        title_opts=opts.TitleOpts(title="Bar-Brush示例", subtitle="我是副标题"),
-        brush_opts=opts.BrushOpts(),
+    .add_yaxis("商家A", Faker.values(), category_gap="60%")
+    .set_series_opts(
+        itemstyle_opts={
+            "normal": {
+                "color": JsCode(
+                    """new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'rgba(0, 244, 255, 1)'
+            }, {
+                offset: 1,
+                color: 'rgba(0, 77, 167, 1)'
+            }], false)"""
+                ),
+                "barBorderRadius": [30, 30, 30, 30],
+                "shadowColor": "rgb(0, 160, 221)",
+            }
+        }
     )
-    .render("bar_with_brush.html")
+    .set_global_opts(title_opts=opts.TitleOpts(title="Bar-渐变圆柱"))
+    .render("bar_border_radius.html")
 )
-
