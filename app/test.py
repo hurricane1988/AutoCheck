@@ -52,7 +52,7 @@ c = (
                 color: 'rgba(0, 244, 255, 1)'
             }, {
                 offset: 1,
-                color: 'rgba(0, 77, 167, 1)'
+                color: 'yellow'
             }], false)"""
                 ),
                 "barBorderRadius": [30, 30, 30, 30],
@@ -61,5 +61,5 @@ c = (
         }
     )
     .set_global_opts(title_opts=opts.TitleOpts(title="Bar-渐变圆柱"))
-    .render("bar_border_radius.html")
+    .render("./templates/test.html")
 )
