@@ -10,7 +10,7 @@
 
 import sys
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget,QApplication,QMainWindow,QMessageBox
+from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox
 from mainwindow import Ui_MainWindow
 from CallMD5 import md5Encrypt
 from CallPortScan import portScanWindow
