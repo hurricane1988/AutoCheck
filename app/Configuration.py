@@ -8,10 +8,13 @@
 ########################################
 
 import sqlite3
+from PyQt5.QtSql import QSqlDatabase,QSqlQueryModel
 
-
+# 初始化数据库连接信息.
 connect = sqlite3.connect("rundb.db")
 cursor = connect.cursor()
+
+# 定义帮助信息文本.
 MSG = '''
         PyCharm 2019.3 (Professional Edition)
         Build #PY-193.5233.109, built on November 28, 2019
@@ -27,3 +30,4 @@ MSG = '''
         Registry: 
         Non-Bundled Plugins: ru.meanmail.plugin.requirements
         '''
+

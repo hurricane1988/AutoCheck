@@ -120,10 +120,10 @@ class DataGrid(QWidget):
         self.tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # 创建界面
-        mainLayout = QVBoxLayout(self);
-        mainLayout.addLayout(operatorLayout);
-        mainLayout.addWidget(self.tableView);
-        mainLayout.addLayout(statusLayout);
+        mainLayout = QVBoxLayout(self)
+        mainLayout.addLayout(operatorLayout)
+        mainLayout.addWidget(self.tableView)
+        mainLayout.addLayout(statusLayout)
         self.setLayout(mainLayout)
 
     # 设置表格
@@ -131,7 +131,7 @@ class DataGrid(QWidget):
         print('*** step2 SetTableView')
         self.db = QSqlDatabase.addDatabase('QSQLITE')
         # 设置数据库名称
-        self.db.setDatabaseName('student.db')
+        self.db.setDatabaseName('rundb.db')
         # 打开数据库
         self.db.open()
 
@@ -167,7 +167,7 @@ class DataGrid(QWidget):
 
     # 得到记录数
     def getTotalRecordCount(self):
-        self.queryModel.setQuery("select * from student")
+        self.queryModel.setQuery("select * from t_server")
         rowCount = self.queryModel.rowCount()
         print('rowCount=' + str(rowCount))
         return rowCount
@@ -181,7 +181,7 @@ class DataGrid(QWidget):
 
     # 记录查询
     def recordQuery(self,limitIndex):
-        szQuery = ("select * from student limit %d,%d" % (limitIndex, self.PageRecordCount))
+        szQuery = ("select * from t_server limit %d,%d" % (limitIndex, self.PageRecordCount))
         self.queryModel.setQuery(szQuery)
         print('query sql=' + szQuery)
 
@@ -235,8 +235,6 @@ class DataGrid(QWidget):
         # 数字正则表达式
         pattern = re.compile(r'^[-+]?[0-9]+\.[0-9]+$')
         match = pattern.match(szText)
-
-        # 判断是否为数字
         if not match:
             QMessageBox.information(self, "提示", "请输入数字")
             return

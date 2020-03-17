@@ -12,21 +12,33 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>650</width>
-    <height>450</height>
+    <width>1090</width>
+    <height>785</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1090</width>
+    <height>785</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1090</width>
+    <height>785</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>运维与客户服务部自动运维工具</string>
   </property>
   <widget class="QWidget" name="mainWindows">
    <widget class="QGroupBox" name="groupBoxGraph">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>390</y>
-      <width>1051</width>
-      <height>311</height>
+      <x>10</x>
+      <y>350</y>
+      <width>1071</width>
+      <height>361</height>
      </rect>
     </property>
     <property name="font">
@@ -48,14 +60,38 @@ color: rgb(85, 170, 255);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidgetProperty">
+   <widget class="QTableView" name="tableViewProperty">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
       <width>1071</width>
-      <height>301</height>
+      <height>271</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:5px;
+font: 11pt &quot;华文中宋&quot;;
+color: rgb(0, 0, 0);
+selection-background-color: rgb(170, 255, 127);
+selection-color: rgb(0, 0, 0);
+gridline-color: rgb(130, 130, 130);
+</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::AllEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashDotLine</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="labelProperty">
@@ -83,42 +119,42 @@ color: rgb(85, 170, 255);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>330</y>
       <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>总共12页</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="labelCurrentPage">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>360</y>
+      <y>330</y>
       <width>71</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>当前第10页</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelTotalItems">
     <property name="geometry">
      <rect>
       <x>1020</x>
-      <y>360</y>
+      <y>330</y>
       <width>54</width>
       <height>12</height>
      </rect>
     </property>
     <property name="text">
-     <string>共100条</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
