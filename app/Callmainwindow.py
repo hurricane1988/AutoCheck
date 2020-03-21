@@ -10,7 +10,7 @@
 
 import sys,re
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt,QUrl
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget,QHeaderView,QTableView
 from mainwindow import Ui_MainWindow
 from CallMD5 import md5Encrypt
@@ -28,30 +28,33 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.setWindowIcon(QIcon('login.ico'))                                      # 设置窗口的图标.
         #self.setFixedSize()
 
-        """窗口显示居中主函数"""
+        # 窗口显示居中主函数
         self.center()
 
-        """调用主窗口函数"""
+        # 调用主窗口函数
         self.setupUi(self)
 
-        """关于我们槽与函数绑定"""
+        # 关于我们槽与函数绑定
         self.actionAbout.triggered.connect(self.about_us)                           # 关于我们动作和about_us函数绑定.
 
-        """MD5窗口的槽与函数绑定"""
+        # MD5窗口的槽与函数绑定
         self.actionMD5.triggered.connect(self.md5Encryptshow)                       # MD5动作与MD5加密函数绑定.
 
-        """端口检查槽与函数绑定"""
+        # 端口检查槽与函数绑定
         self.actionPortCheck.triggered.connect(self.portScanShow)
         #self.actionResetPassWord.triggered.connect(self.resetPassword)             # 密码重置动作和函数绑定.
 
-        """信息录入槽与函数绑定"""
+        # 信息录入槽与函数绑定
         self.actionAddItem.triggered.connect(self.enterInfo)
 
-        """密码重置槽与函数绑定"""
+        # 密码重置槽与函数绑定
         self.actionResetPassWord.triggered.connect(self.ResetPasswd)
 
-        """调用资产表格显示函数"""
+        # 调用资产表格显示函数
         self.setTableView()
+
+        # 调用图表显示函数.
+        self.showgraph()
 
 
     # 窗口居中主函数.
@@ -241,6 +244,10 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
     def ResetPasswd(self):
         self.resetpassword = resetPassWord()
         self.resetpassword.show()
+
+    # 网页图表加载函数.
+    def showgraph(self):
+        self.widgetGraph.load(QUrl("file:///grid多个坐标轴.html"))
 
 
 if __name__ == '__main__':
