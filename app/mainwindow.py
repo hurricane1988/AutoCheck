@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -19,18 +17,6 @@ class Ui_MainWindow(object):
         MainWindow.setBaseSize(QtCore.QSize(1090, 785))
         self.mainWindows = QtWidgets.QWidget(MainWindow)
         self.mainWindows.setObjectName("mainWindows")
-        self.groupBoxGraph = QtWidgets.QGroupBox(self.mainWindows)
-        self.groupBoxGraph.setGeometry(QtCore.QRect(10, 350, 1071, 361))
-        font = QtGui.QFont()
-        font.setFamily("华文中宋")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.groupBoxGraph.setFont(font)
-        self.groupBoxGraph.setStyleSheet("border-color: rgb(255, 170, 0);\n"
-"color: rgb(85, 170, 255);")
-        self.groupBoxGraph.setAlignment(QtCore.Qt.AlignCenter)
-        self.groupBoxGraph.setObjectName("groupBoxGraph")
         self.tableViewProperty = QtWidgets.QTableView(self.mainWindows)
         self.tableViewProperty.setGeometry(QtCore.QRect(10, 50, 1071, 271))
         self.tableViewProperty.setAutoFillBackground(True)
@@ -49,11 +35,14 @@ class Ui_MainWindow(object):
         self.labelProperty = QtWidgets.QLabel(self.mainWindows)
         self.labelProperty.setGeometry(QtCore.QRect(510, 20, 71, 21))
         font = QtGui.QFont()
-        font.setFamily("华文中宋")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("幼圆")
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.labelProperty.setFont(font)
+        self.labelProperty.setStyleSheet("font: 13pt \"幼圆\";\n"
+"color: rgb(85, 170, 255);")
         self.labelProperty.setObjectName("labelProperty")
         self.labelTotalPages = QtWidgets.QLabel(self.mainWindows)
         self.labelTotalPages.setGeometry(QtCore.QRect(10, 330, 81, 16))
@@ -91,6 +80,23 @@ class Ui_MainWindow(object):
         self.pushButtonGO = QtWidgets.QPushButton(self.layoutWidget)
         self.pushButtonGO.setObjectName("pushButtonGO")
         self.horizontalLayout.addWidget(self.pushButtonGO)
+        self.widgetGraph = QtWebEngineWidgets.QWebEngineView(self.mainWindows)
+        self.widgetGraph.setGeometry(QtCore.QRect(10, 370, 1071, 351))
+        self.widgetGraph.setStyleSheet("border-radius:5px;\n"
+"background-color: rgb(255, 255, 255);")
+        self.widgetGraph.setObjectName("widgetGraph")
+        self.labelPropertyGraph = QtWidgets.QLabel(self.mainWindows)
+        self.labelPropertyGraph.setGeometry(QtCore.QRect(510, 340, 71, 21))
+        font = QtGui.QFont()
+        font.setFamily("幼圆")
+        font.setPointSize(13)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.labelPropertyGraph.setFont(font)
+        self.labelPropertyGraph.setStyleSheet("font: 13pt \"幼圆\";\n"
+"color: rgb(255, 170, 0);")
+        self.labelPropertyGraph.setObjectName("labelPropertyGraph")
         MainWindow.setCentralWidget(self.mainWindows)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1090, 25))
@@ -206,13 +212,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "运维与客户服务部自动运维工具"))
-        self.groupBoxGraph.setTitle(_translate("MainWindow", "资产报表"))
         self.labelProperty.setText(_translate("MainWindow", "资产清单"))
         self.pushButtonPrevPage.setText(_translate("MainWindow", "前一页"))
         self.pushButtonNextPage.setText(_translate("MainWindow", "后一页"))
         self.labelSwitchPage.setText(_translate("MainWindow", "转到第"))
         self.labelPage.setText(_translate("MainWindow", "页"))
         self.pushButtonGO.setText(_translate("MainWindow", "GO"))
+        self.labelPropertyGraph.setText(_translate("MainWindow", "资产图表"))
         self.File.setTitle(_translate("MainWindow", "文件"))
         self.Tool.setTitle(_translate("MainWindow", "工具"))
         self.Help.setTitle(_translate("MainWindow", "帮助"))
@@ -255,3 +261,5 @@ class Ui_MainWindow(object):
         self.actionAbout.setShortcut(_translate("MainWindow", "Ctrl+Z"))
         self.actionResetPassWord.setText(_translate("MainWindow", "密码重置"))
         self.actionResetPassWord.setShortcut(_translate("MainWindow", "Ctrl+G"))
+
+from PyQt5 import QtWebEngineWidgets

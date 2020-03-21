@@ -32,34 +32,6 @@
    <string>运维与客户服务部自动运维工具</string>
   </property>
   <widget class="QWidget" name="mainWindows">
-   <widget class="QGroupBox" name="groupBoxGraph">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>350</y>
-      <width>1071</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>华文中宋</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-color: rgb(255, 170, 0);
-color: rgb(85, 170, 255);</string>
-    </property>
-    <property name="title">
-     <string>资产报表</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QTableView" name="tableViewProperty">
     <property name="geometry">
      <rect>
@@ -105,11 +77,16 @@ gridline-color: rgb(130, 130, 130);
     </property>
     <property name="font">
      <font>
-      <family>华文中宋</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>幼圆</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;幼圆&quot;;
+color: rgb(85, 170, 255);</string>
     </property>
     <property name="text">
      <string>资产清单</string>
@@ -203,6 +180,46 @@ gridline-color: rgb(130, 130, 130);
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QWebEngineView" name="widgetGraph" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>1071</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:5px;
+background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelPropertyGraph">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>340</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>幼圆</family>
+      <pointsize>13</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;幼圆&quot;;
+color: rgb(255, 170, 0);</string>
+    </property>
+    <property name="text">
+     <string>资产图表</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -463,6 +480,14 @@ gridline-color: rgb(130, 130, 130);
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">qwebengineview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
