@@ -17,6 +17,7 @@ from CallMD5 import md5Encrypt
 from CallPortScan import portScanWindow
 from CallenterInfo import enterWindow
 from CallChangePassword import resetPassWord
+from CallIpResolve import ipResolveWindow
 from Configuration import *
 
 
@@ -24,31 +25,27 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyMainWindow, self).__init__(parent)
 
-        self.setWindowTitle('自助巡检GUI工具')                                        # 设置窗口标题.
-        self.setWindowIcon(QIcon('login.ico'))                                      # 设置窗口的图标.
+        self.setWindowTitle('自助巡检GUI工具')
+        self.setWindowIcon(QIcon('login.ico'))
         #self.setFixedSize()
-
         # 窗口显示居中主函数
         self.center()
-
         # 调用主窗口函数
         self.setupUi(self)
-
         # 关于我们槽与函数绑定
-        self.actionAbout.triggered.connect(self.about_us)                           # 关于我们动作和about_us函数绑定.
-
+        self.actionAbout.triggered.connect(self.about_us)
         # MD5窗口的槽与函数绑定
-        self.actionMD5.triggered.connect(self.md5Encryptshow)                       # MD5动作与MD5加密函数绑定.
+        self.actionMD5.triggered.connect(self.md5Encryptshow)
 
         # 端口检查槽与函数绑定
         self.actionPortCheck.triggered.connect(self.portScanShow)
-        #self.actionResetPassWord.triggered.connect(self.resetPassword)             # 密码重置动作和函数绑定.
-
+        #self.actionResetPassWord.triggered.connect(self.resetPassword)
         # 信息录入槽与函数绑定
         self.actionAddItem.triggered.connect(self.enterInfo)
-
         # 密码重置槽与函数绑定
         self.actionResetPassWord.triggered.connect(self.ResetPasswd)
+        # 公网IP地址解析.
+        self.actionPublicIP.triggered.connect(self.ipResolve)
 
         # 调用资产表格显示函数
         self.setTableView()
@@ -234,6 +231,11 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
     def portScanShow(self):
         self.portscan = portScanWindow()
         self.portscan.show()
+
+    # 公网IP地址解析.
+    def ipResolve(self):
+        self.publicIP = ipResolveWindow()
+        self.publicIP.show()
 
     # 信息录入主函数.
     def enterInfo(self):
