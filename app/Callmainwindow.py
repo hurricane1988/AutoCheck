@@ -21,6 +21,7 @@ from CallIpResolve import ipResolveWindow
 from Configuration import *
 
 
+# 主窗口调用主类.
 class MyMainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyMainWindow, self).__init__(parent)
