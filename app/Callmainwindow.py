@@ -247,7 +247,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
 
     # 网页图表加载函数.
     def showgraph(self):
-        self.widgetGraph.load(QUrl("file:///grid多个坐标轴.html"))
+        self.widgetGraph.load(QUrl("file:///./templates/grid多个坐标轴.html"))
 
 
 if __name__ == '__main__':
