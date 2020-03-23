@@ -46,6 +46,8 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.actionResetPassWord.triggered.connect(self.ResetPasswd)
         # 公网IP地址解析.
         self.actionPublicIP.triggered.connect(self.ipResolve)
+        # 主窗口关闭选项.
+        self.actionCancel.triggered.connect(self.close)
 
         # 调用资产表格显示函数
         self.setTableView()
