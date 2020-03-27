@@ -8,12 +8,17 @@
 ########################################
 
 import sqlite3
-from PyQt5.QtSql import QSqlDatabase,QSqlQueryModel
+from PyQt5.QtSql import QSqlDatabase,QSqlQueryModel,QSqlQuery
 
 # 初始化数据库连接信息.
 connect = sqlite3.connect("rundb.db")
 cursor = connect.cursor()
 
+# 初始化数据库连接.
+database = QSqlDatabase.addDatabase('QSQLITE')
+database.setDatabaseName('rundb.db')
+database.open()
+query = QSqlQuery()
 # 定义帮助信息文本.
 MSG = '''
         PyCharm 2019.3 (Professional Edition)
