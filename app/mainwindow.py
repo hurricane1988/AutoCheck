@@ -11,14 +11,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1090, 785)
+        MainWindow.setEnabled(True)
+        MainWindow.resize(1189, 785)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
+        MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(1090, 785))
-        MainWindow.setMaximumSize(QtCore.QSize(1090, 785))
+        MainWindow.setMaximumSize(QtCore.QSize(2000, 785))
         MainWindow.setBaseSize(QtCore.QSize(1090, 785))
         self.mainWindows = QtWidgets.QWidget(MainWindow)
         self.mainWindows.setObjectName("mainWindows")
         self.tableViewProperty = QtWidgets.QTableView(self.mainWindows)
-        self.tableViewProperty.setGeometry(QtCore.QRect(10, 50, 1071, 271))
+        self.tableViewProperty.setGeometry(QtCore.QRect(10, 50, 1171, 271))
         self.tableViewProperty.setAutoFillBackground(True)
         self.tableViewProperty.setStyleSheet("border-radius:5px;\n"
 "font: 11pt \"华文中宋\";\n"
@@ -81,7 +87,7 @@ class Ui_MainWindow(object):
         self.pushButtonGO.setObjectName("pushButtonGO")
         self.horizontalLayout.addWidget(self.pushButtonGO)
         self.widgetGraph = QtWebEngineWidgets.QWebEngineView(self.mainWindows)
-        self.widgetGraph.setGeometry(QtCore.QRect(10, 370, 1071, 351))
+        self.widgetGraph.setGeometry(QtCore.QRect(10, 370, 1171, 351))
         self.widgetGraph.setStyleSheet("border-radius:5px;\n"
 "background-color: rgb(255, 255, 255);")
         self.widgetGraph.setObjectName("widgetGraph")
@@ -99,7 +105,7 @@ class Ui_MainWindow(object):
         self.labelPropertyGraph.setObjectName("labelPropertyGraph")
         MainWindow.setCentralWidget(self.mainWindows)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1090, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1189, 25))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(11)

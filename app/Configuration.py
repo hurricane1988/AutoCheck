@@ -7,12 +7,12 @@
 # FileName: Configuration.py
 ########################################
 
-import sqlite3
+import sqlite3,hashlib,logging
 from PyQt5.QtSql import QSqlDatabase,QSqlQueryModel,QSqlQuery
 
 # 初始化数据库连接信息.
-connect = sqlite3.connect("rundb.db")
-cursor = connect.cursor()
+#connect = sqlite3.connect("rundb.db")
+#cursor = connect.cursor()
 
 # 初始化数据库连接.
 database = QSqlDatabase.addDatabase('QSQLITE')
@@ -36,3 +36,15 @@ MSG = '''
         Non-Bundled Plugins: ru.meanmail.plugin.requirements
         '''
 
+
+def md5Encrypt(msg):
+    try:
+        plainText = hashlib.md5(msg.encode())
+        cipherText = plainText.hexdigest()
+        return cipherText
+
+    except Exception as e:
+        logging.error('加密字符串{0}失败，{1}'.format(msg, e))
+
+    finally:
+        pass

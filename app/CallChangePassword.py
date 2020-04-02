@@ -28,16 +28,16 @@ class resetPassWord(QtWidgets.QDialog,Ui_ChangePassWord):
     def changePassword(self):
         passwdNew = self.lineEditPassWord.text()
         passwd = self.lineEditPassWordCheck.text()
-        EncryptPassword = self.dbClient.md5Encrypt(passwd)
-        print("第一次密码:" + passwdNew,'第二次密码:' + passwd)
+        EncryptPassword = md5Encrypt(passwd)
+        #print("第一次密码:" + passwdNew,'第二次密码:' + passwd)
 
         if passwdNew == passwd:
-
             try:
-                cursor.execute("update user set password = '{}' where username='admin'".format(EncryptPassword))
-                connect.commit()
-                cursor.close()
+                query.execute("update user set password = '{}' where username='admin'".format(EncryptPassword))
+                database.commit()
+                query.close()
                 QtWidgets.QMessageBox.information(self, '消息提示', '密码修改成功!', QtWidgets.QMessageBox.Cancel)
+                self.close()
 
             except Exception as e:
                 pass
