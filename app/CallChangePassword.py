@@ -7,10 +7,10 @@
 # FileName: CallChangePassword.py
 ######################################
 
-import sys
+import sqlite3
 from PyQt5 import QtWidgets,QtGui,QtCore
 from ChangePassword import Ui_ChangePassWord
-from Configuration import *
+from Configuration import md5Encrypt
 
 
 # 处理数据主类.
@@ -18,6 +18,8 @@ class resetPassWord(QtWidgets.QDialog,Ui_ChangePassWord):
 
     def __init__(self, parent=None):
         super(resetPassWord, self).__init__(parent)
+        self.database = sqlite3.connect("rundb.db")
+        self.cursor = self.database.cursor()
         #self.setWindowTitle('修改密码')
         #self.setWindowFlags(Qt.FramelessWindowHint)  #设置无边框
         self.setupUi(self)
@@ -33,15 +35,15 @@ class resetPassWord(QtWidgets.QDialog,Ui_ChangePassWord):
 
         if passwdNew == passwd:
             try:
-                query.execute("update user set password = '{}' where username='admin'".format(EncryptPassword))
-                database.commit()
-                query.close()
-                QtWidgets.QMessageBox.information(self, '消息提示', '密码修改成功!', QtWidgets.QMessageBox.Cancel)
-                self.close()
+                if self.cursor.execute("update user set password = '{}' where username='admin'".format(EncryptPassword)):
+                    self.database.commit()
+                    self.cursor.close()
+                    QtWidgets.QMessageBox.information(self, '消息提示', '密码修改成功!', QtWidgets.QMessageBox.Cancel)
 
             except Exception as e:
-                pass
+                print(e)
             finally:
-                pass
+                self.database.close()
+                self.close()
         else:
             QtWidgets.QMessageBox.warning(self,'错误提示','两次密码输入不一致!',QtWidgets.QMessageBox.Cancel)

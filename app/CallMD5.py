@@ -5,9 +5,9 @@ import sys,hashlib,logging
 from PyQt5 import QtCore, QtGui, QtWidgets
 from MD5 import Ui_MD5
 
-class md5Encrypt(QtWidgets.QWidget,Ui_MD5):
+class md5encrypt(QtWidgets.QWidget,Ui_MD5):
     def __init__(self, parent=None):
-        super(md5Encrypt, self).__init__(parent)
+        super(md5encrypt, self).__init__(parent)
         self.setupUi(self)
         self.pushButtonMD5.clicked.connect(self.showCipher)
 

@@ -13,7 +13,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt,QUrl
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget,QHeaderView,QTableView
 from mainwindow import Ui_MainWindow
-from CallMD5 import md5Encrypt
+from CallMD5 import md5encrypt
 from CallPortScan import portScanWindow
 from CallenterInfo import enterWindow
 from CallChangePassword import resetPassWord
@@ -227,7 +227,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
 
     # 密码重置函数.
     def md5Encryptshow(self):
-        self.MD5 = md5Encrypt()
+        self.MD5 = md5encrypt()
         self.MD5.show()
 
     # 端口扫描主函数.
