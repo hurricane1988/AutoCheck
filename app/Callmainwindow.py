@@ -18,6 +18,7 @@ from CallPortScan import portScanWindow
 from CallenterInfo import enterWindow
 from CallChangePassword import resetPassWord
 from CallIpResolve import ipResolveWindow
+from graph_generate import mainpip
 from Configuration import *
 
 
@@ -49,13 +50,12 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.actionPublicIP.triggered.connect(self.ipResolve)
         # 主窗口关闭选项.
         self.actionCancel.triggered.connect(self.close)
-
+        # 调用生产饼图函数.
+        mainpip()
         # 调用资产表格显示函数
         self.setTableView()
-
         # 调用图表显示函数.
         self.showgraph()
-
 
     # 窗口居中主函数.
     def center(self):
@@ -252,7 +252,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
 
     # 网页图表加载函数.
     def showgraph(self):
-        self.widgetGraph.load(QUrl("file:///./templates/grid多个坐标轴.html"))
+        self.widgetGraph.load(QUrl("file:///./templates/grid_horizontal.html"))
 
 
 if __name__ == '__main__':

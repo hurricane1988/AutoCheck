@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from pyecharts import options as opts
-from pyecharts.charts import Grid, Pie
+from pyecharts.charts import Bar, Grid, Line, Pie
 from Configuration import *
 
 # 获取SQLite3数据库中的操作系统版本.
@@ -53,11 +53,10 @@ osVersionPip = (
     .add(
         "",
         osVersion(),
-        radius=["45", "40%"],
-        center=["35%", "25%"],
+        radius=["55", "40%"],
+        center=["38%", "28%"],
         label_opts=opts.LabelOpts(
             position="outside",
-            interval=100,
             #formatter="{a|{a}}{abg|}\n{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
             formatter="{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
             background_color="#eee",
@@ -92,7 +91,7 @@ osVersionPip = (
     #.set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
     .set_global_opts(
         #title_opts=opts.TitleOpts(title="Pie-Legend 滚动"),
-        legend_opts=opts.LegendOpts(type_="scroll", pos_left="80%",orient="vertical"),
+        legend_opts=opts.LegendOpts(type_="scroll",  pos_left="85%",orient="vertical"),
     )
     #.render("./templates/osVersionPip.html")
 )
@@ -102,10 +101,9 @@ osTypePip = (
     .add(
         "",
         osType(),
-        radius=["45", "40%"],
-        center=["35%", "80%"],
+        radius=["55", "40%"],
+        center=["38%", "80%"],
         label_opts=opts.LabelOpts(
-            interval=0,
             position="outside",
             #formatter="{a|{a}}{abg|}\n{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
             formatter="{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
@@ -141,8 +139,7 @@ osTypePip = (
     #.set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
     .set_global_opts(
         #title_opts=opts.TitleOpts(title="Pie-Legend 滚动"),
-        legend_opts=opts.LegendOpts(type_="scroll", pos_top="55%" ,pos_left="80%",orient="vertical"),
-        xaxis_opts=opts.LabelOpts(interval=1500)
+        legend_opts=opts.LegendOpts(type_="scroll", pos_top="55%" ,pos_left="85%",orient="vertical",is_show=True),
     )
     #.render("./templates/osVersionPip.html")
 )
@@ -150,8 +147,8 @@ osTypePip = (
 
 grid = (
     Grid()
-    .add(osTypePip,grid_opts=opts.GridOpts())
-    .add(osVersionPip, grid_opts=opts.GridOpts())
+    .add(osTypePip,grid_opts=opts.GridOpts(pos_bottom="60%"))
+    .add(osVersionPip, grid_opts=opts.GridOpts(pos_top="60%"))
     .render("./templates/grid_horizontal.html")
 )
 

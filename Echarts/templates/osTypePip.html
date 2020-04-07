@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="b65fefb6d0db4bba88cc9e969c6f60ce" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_b65fefb6d0db4bba88cc9e969c6f60ce = echarts.init(
+            document.getElementById('b65fefb6d0db4bba88cc9e969c6f60ce'), 'white', {renderer: 'canvas'});
+        var option_b65fefb6d0db4bba88cc9e969c6f60ce = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AIX\u7cfb\u7edf",
+                    "value": 3
+                },
+                {
+                    "name": "HP-UNIX\u7cfb\u7edf",
+                    "value": 1
+                },
+                {
+                    "name": "Linux\u7cfb\u7edf",
+                    "value": 12
+                }
+            ],
+            "radius": [
+                "0",
+                "40%"
+            ],
+            "center": [
+                "22%",
+                "30%"
+            ],
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": "{b}: {c}"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AIX\u7cfb\u7edf",
+                "HP-UNIX\u7cfb\u7edf",
+                "Linux\u7cfb\u7edf"
+            ],
+            "selected": {},
+            "type": "scroll",
+            "show": true,
+            "right": "40%",
+            "top": "3%",
+            "orient": "vertical",
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_b65fefb6d0db4bba88cc9e969c6f60ce.setOption(option_b65fefb6d0db4bba88cc9e969c6f60ce);
+    </script>
+</body>
+</html>

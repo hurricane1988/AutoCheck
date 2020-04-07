@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="cf134e573adf4e97804d434d004afad6" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_cf134e573adf4e97804d434d004afad6 = echarts.init(
+            document.getElementById('cf134e573adf4e97804d434d004afad6'), 'white', {renderer: 'canvas'});
+        var option_cf134e573adf4e97804d434d004afad6 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "AIX\u7cfb\u7edf",
+                    "value": 3
+                },
+                {
+                    "name": "Linux\u7cfb\u7edf",
+                    "value": 12
+                },
+                {
+                    "name": "HP-UNIX\u7cfb\u7edf",
+                    "value": 1
+                }
+            ],
+            "radius": [
+                "45",
+                "40%"
+            ],
+            "center": [
+                "35%",
+                "80%"
+            ],
+            "label": {
+                "show": true,
+                "position": "outside",
+                "margin": 8,
+                "interval": 0,
+                "formatter": "{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
+                "backgroundColor": "#eee",
+                "borderColor": "#aaa",
+                "borderWidth": 1,
+                "borderRadius": 5,
+                "rich": {
+                    "abg": {
+                        "backgroundColor": "#e3e3e3",
+                        "width": "100%",
+                        "align": "right",
+                        "height": 22,
+                        "borderRadius": [
+                            4,
+                            4,
+                            0,
+                            0
+                        ]
+                    },
+                    "hr": {
+                        "borderColor": "#aaa",
+                        "width": "100%",
+                        "borderWidth": 1,
+                        "height": 0
+                    },
+                    "b": {
+                        "fontSize": 11,
+                        "lineHeight": 25
+                    },
+                    "per": {
+                        "color": "#eee",
+                        "backgroundColor": "#334455",
+                        "padding": [
+                            2,
+                            4
+                        ],
+                        "borderRadius": 2
+                    }
+                }
+            },
+            "xAxisIndex": 0,
+            "yAxisIndex": 0
+        },
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "redhat10",
+                    "value": 1
+                },
+                {
+                    "name": "HP-Unix 120",
+                    "value": 1
+                },
+                {
+                    "name": "Redhat7.9 x64",
+                    "value": 1
+                },
+                {
+                    "name": "AIX 7.1",
+                    "value": 1
+                },
+                {
+                    "name": "\u963f\u65af\u8482\u82ac",
+                    "value": 1
+                },
+                {
+                    "name": "windows2009 server",
+                    "value": 10
+                },
+                {
+                    "name": "Centos 8.0",
+                    "value": 1
+                }
+            ],
+            "radius": [
+                "45",
+                "40%"
+            ],
+            "center": [
+                "35%",
+                "25%"
+            ],
+            "label": {
+                "show": true,
+                "position": "outside",
+                "margin": 8,
+                "interval": 100,
+                "formatter": "{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
+                "backgroundColor": "#eee",
+                "borderColor": "#aaa",
+                "borderWidth": 1,
+                "borderRadius": 5,
+                "rich": {
+                    "abg": {
+                        "backgroundColor": "#e3e3e3",
+                        "width": "100%",
+                        "align": "right",
+                        "height": 22,
+                        "borderRadius": [
+                            4,
+                            4,
+                            0,
+                            0
+                        ]
+                    },
+                    "hr": {
+                        "borderColor": "#aaa",
+                        "width": "100%",
+                        "borderWidth": 1,
+                        "height": 0
+                    },
+                    "b": {
+                        "fontSize": 11,
+                        "lineHeight": 25
+                    },
+                    "per": {
+                        "color": "#eee",
+                        "backgroundColor": "#334455",
+                        "padding": [
+                            2,
+                            4
+                        ],
+                        "borderRadius": 2
+                    }
+                }
+            },
+            "xAxisIndex": 1,
+            "yAxisIndex": 1
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "AIX\u7cfb\u7edf",
+                "Linux\u7cfb\u7edf",
+                "HP-UNIX\u7cfb\u7edf"
+            ],
+            "selected": {},
+            "type": "scroll",
+            "show": true,
+            "left": "80%",
+            "top": "55%",
+            "orient": "vertical",
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        },
+        {
+            "data": [
+                "redhat10",
+                "HP-Unix 120",
+                "Redhat7.9 x64",
+                "AIX 7.1",
+                "\u963f\u65af\u8482\u82ac",
+                "windows2009 server",
+                "Centos 8.0"
+            ],
+            "selected": {},
+            "type": "scroll",
+            "show": true,
+            "left": "80%",
+            "orient": "vertical",
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "padding": 5,
+            "itemGap": 10
+        },
+        {
+            "padding": 5,
+            "itemGap": 10
+        }
+    ],
+    "grid": [
+        {
+            "containLabel": false
+        },
+        {
+            "containLabel": false
+        }
+    ]
+};
+        chart_cf134e573adf4e97804d434d004afad6.setOption(option_cf134e573adf4e97804d434d004afad6);
+    </script>
+</body>
+</html>

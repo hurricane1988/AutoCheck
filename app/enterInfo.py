@@ -2,20 +2,17 @@
 
 # Form implementation generated from reading ui file 'enterInfo.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_enterInfo(object):
     def setupUi(self, enterInfo):
         enterInfo.setObjectName("enterInfo")
         enterInfo.setEnabled(True)
-        enterInfo.resize(474, 324)
-        enterInfo.setFixedSize(474, 324)
+        enterInfo.resize(471, 318)
         self.groupBox = QtWidgets.QGroupBox(enterInfo)
         self.groupBox.setGeometry(QtCore.QRect(10, 10, 451, 301))
         font = QtGui.QFont()
@@ -28,12 +25,6 @@ class Ui_enterInfo(object):
 "background-color: lightgray;")
         self.groupBox.setAlignment(QtCore.Qt.AlignCenter)
         self.groupBox.setObjectName("groupBox")
-        self.lineEditVersion = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEditVersion.setGeometry(QtCore.QRect(80, 60, 251, 20))
-        self.lineEditVersion.setStyleSheet("border-radius:5px;\n"
-"background-color: rgb(255, 255, 255);")
-        self.lineEditVersion.setClearButtonEnabled(True)
-        self.lineEditVersion.setObjectName("lineEditVersion")
         self.labelSelectOS = QtWidgets.QLabel(self.groupBox)
         self.labelSelectOS.setGeometry(QtCore.QRect(20, 30, 61, 21))
         font = QtGui.QFont()
@@ -149,6 +140,38 @@ class Ui_enterInfo(object):
 "background-color: rgb(0, 85, 127);\n"
 "border-radius:5px;")
         self.pushButtonQuit.setObjectName("pushButtonQuit")
+        self.comboBoxSelectVersion = QtWidgets.QComboBox(self.groupBox)
+        self.comboBoxSelectVersion.setGeometry(QtCore.QRect(80, 60, 281, 22))
+        self.comboBoxSelectVersion.setAutoFillBackground(False)
+        self.comboBoxSelectVersion.setStyleSheet("border-radius:5px;\n"
+"background-color: rgb(255, 255, 255);")
+        self.comboBoxSelectVersion.setEditable(False)
+        self.comboBoxSelectVersion.setObjectName("comboBoxSelectVersion")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
+        self.comboBoxSelectVersion.addItem("")
 
         self.retranslateUi(enterInfo)
         QtCore.QMetaObject.connectSlotsByName(enterInfo)
@@ -156,9 +179,7 @@ class Ui_enterInfo(object):
     def retranslateUi(self, enterInfo):
         _translate = QtCore.QCoreApplication.translate
         enterInfo.setWindowTitle(_translate("enterInfo", "信息录入"))
-        enterInfo.setWindowIcon(QtGui.QIcon('login.ico'))
         self.groupBox.setTitle(_translate("enterInfo", "基本信息录入"))
-        self.lineEditVersion.setPlaceholderText(_translate("enterInfo", "请输入操作系统版本"))
         self.labelSelectOS.setText(_translate("enterInfo", "系统类型"))
         self.comboBoxSelectOS.setItemText(0, _translate("enterInfo", "Linux系统"))
         self.comboBoxSelectOS.setItemText(1, _translate("enterInfo", "AIX系统"))
@@ -177,3 +198,29 @@ class Ui_enterInfo(object):
         self.plainTextEditDescription.setPlaceholderText(_translate("enterInfo", "请输入服务器描述信息"))
         self.pushButtonEntry.setText(_translate("enterInfo", "录入"))
         self.pushButtonQuit.setText(_translate("enterInfo", "取消"))
+        self.comboBoxSelectVersion.setItemText(0, _translate("enterInfo", "Red Hat Enterprise Linux Server release 6"))
+        self.comboBoxSelectVersion.setItemText(1, _translate("enterInfo", "Red Hat Enterprise Linux Server release 7"))
+        self.comboBoxSelectVersion.setItemText(2, _translate("enterInfo", "Red Hat Enterprise Linux Server release 8"))
+        self.comboBoxSelectVersion.setItemText(3, _translate("enterInfo", "CentOS Linux release 6"))
+        self.comboBoxSelectVersion.setItemText(4, _translate("enterInfo", "CentOS Linux release 7"))
+        self.comboBoxSelectVersion.setItemText(5, _translate("enterInfo", "CentOS Linux release 8"))
+        self.comboBoxSelectVersion.setItemText(6, _translate("enterInfo", "SUSE Linux 11"))
+        self.comboBoxSelectVersion.setItemText(7, _translate("enterInfo", "SUSE Linux 12"))
+        self.comboBoxSelectVersion.setItemText(8, _translate("enterInfo", "AIX Version 6"))
+        self.comboBoxSelectVersion.setItemText(9, _translate("enterInfo", "AIX Version 7"))
+        self.comboBoxSelectVersion.setItemText(10, _translate("enterInfo", "Windows Server 2003 32位"))
+        self.comboBoxSelectVersion.setItemText(11, _translate("enterInfo", "Windows Server 2003 64位"))
+        self.comboBoxSelectVersion.setItemText(12, _translate("enterInfo", "Windows Server 2008 32位"))
+        self.comboBoxSelectVersion.setItemText(13, _translate("enterInfo", "Windows Server 2008 64位"))
+        self.comboBoxSelectVersion.setItemText(14, _translate("enterInfo", "Windows Server 2012 32位"))
+        self.comboBoxSelectVersion.setItemText(15, _translate("enterInfo", "Windows Server 2012 64位"))
+        self.comboBoxSelectVersion.setItemText(16, _translate("enterInfo", "Windows Server 2016 32位"))
+        self.comboBoxSelectVersion.setItemText(17, _translate("enterInfo", "Windows Server 2016 64位"))
+        self.comboBoxSelectVersion.setItemText(18, _translate("enterInfo", "Windows XP 32位"))
+        self.comboBoxSelectVersion.setItemText(19, _translate("enterInfo", "Windows XP 64位"))
+        self.comboBoxSelectVersion.setItemText(20, _translate("enterInfo", "Windows 7 32位"))
+        self.comboBoxSelectVersion.setItemText(21, _translate("enterInfo", "Windows 7 64位"))
+        self.comboBoxSelectVersion.setItemText(22, _translate("enterInfo", "Windows 10 32位"))
+        self.comboBoxSelectVersion.setItemText(23, _translate("enterInfo", "Windows 10 64位"))
+        self.comboBoxSelectVersion.setItemText(24, _translate("enterInfo", "Others"))
+

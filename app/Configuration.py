@@ -19,6 +19,9 @@ database = QSqlDatabase.addDatabase('QSQLITE')
 database.setDatabaseName('rundb.db')
 database.open()
 query = QSqlQuery()
+
+connect = sqlite3.connect('rundb.db')
+cursor = connect.cursor()
 # 定义帮助信息文本.
 MSG = '''
         PyCharm 2019.3 (Professional Edition)
