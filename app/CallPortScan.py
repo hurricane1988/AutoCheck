@@ -76,7 +76,9 @@ class portScanWindow(QtWidgets.QWidget,Ui_PortScan):
 
     # 端口扫描检查
     def scanPorts(self):
+        pass
 
+        """
         try:
             IP  = self.lineEditScanIP.text()
 
@@ -88,6 +90,7 @@ class portScanWindow(QtWidgets.QWidget,Ui_PortScan):
             pass
         finally:
             pass
+        """
 
 
 if __name__ == '__main__':
