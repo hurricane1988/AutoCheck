@@ -18,6 +18,7 @@ from CallPortScan import portScanWindow
 from CallenterInfo import enterWindow
 from CallChangePassword import resetPassWord
 from CallIpResolve import ipResolveWindow
+from CallExportInfo import exportInfoWindows
 from graph_generate import mainpip
 from Configuration import *
 
@@ -50,6 +51,8 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.actionPublicIP.triggered.connect(self.ipResolve)
         # 主窗口关闭选项.
         self.actionCancel.triggered.connect(self.close)
+        # 主窗口文件导出槽与函数绑定.
+        self.actionExport.triggered.connect(self.exportInfo)
         # 调用生产饼图函数.
         mainpip()
         # 调用资产表格显示函数
@@ -249,6 +252,11 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
     def ResetPasswd(self):
         self.resetpassword = resetPassWord()
         self.resetpassword.show()
+
+    # 文件信息导出主函数.
+    def exportInfo(self):
+        self.exportInformation = exportInfoWindows()
+        self.exportInformation.show()
 
     # 网页图表加载函数.
     def showgraph(self):
