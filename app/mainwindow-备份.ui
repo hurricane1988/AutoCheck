@@ -9,20 +9,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1185</width>
-    <height>800</height>
+    <width>1189</width>
+    <height>785</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
     <horstretch>1</horstretch>
-    <verstretch>1</verstretch>
+    <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
     <width>1090</width>
-    <height>800</height>
+    <height>785</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -41,11 +41,45 @@
    <string>运维与客户服务部自动运维工具</string>
   </property>
   <widget class="QWidget" name="mainWindows">
+   <widget class="QTableView" name="tableViewProperty">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>1171</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:5px;
+font: 11pt &quot;华文中宋&quot;;
+color: rgb(0, 0, 0);
+selection-background-color: rgb(170, 255, 127);
+selection-color: rgb(0, 0, 0);
+gridline-color: rgb(130, 130, 130);
+</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::AllEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashDotLine</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QLabel" name="labelProperty">
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>0</y>
+      <y>20</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -67,20 +101,103 @@ color: rgb(85, 170, 255);</string>
      <string>资产清单</string>
     </property>
    </widget>
+   <widget class="QLabel" name="labelTotalPages">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCurrentPage">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>330</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTotalItems">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>330</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>351</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButtonPrevPage">
+       <property name="text">
+        <string>前一页</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonNextPage">
+       <property name="text">
+        <string>后一页</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelSwitchPage">
+       <property name="text">
+        <string>转到第</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditPageNumber"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelPage">
+       <property name="text">
+        <string>页</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonGO">
+       <property name="text">
+        <string>GO</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <widget class="QWebEngineView" name="widgetGraph" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>385</y>
+      <y>370</y>
       <width>1171</width>
-      <height>411</height>
+      <height>351</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius:5px;
@@ -91,7 +208,7 @@ background-color: rgb(255, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>360</y>
+      <y>340</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -113,327 +230,13 @@ color: rgb(255, 170, 0);</string>
      <string>资产图表</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>1171</width>
-      <height>351</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;华文中宋&quot;;</string>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>服务器信息</string>
-     </attribute>
-     <widget class="QTableView" name="tableViewServersProperty">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>30</y>
-        <width>1170</width>
-        <height>271</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius:5px;
-font: 11pt &quot;华文中宋&quot;;
-color: rgb(0, 0, 0);
-selection-background-color: rgb(170, 255, 127);
-selection-color: rgb(0, 0, 0);
-gridline-color: rgb(130, 130, 130);
-</string>
-      </property>
-      <property name="editTriggers">
-       <set>QAbstractItemView::AllEditTriggers</set>
-      </property>
-      <property name="dragEnabled">
-       <bool>true</bool>
-      </property>
-      <property name="gridStyle">
-       <enum>Qt::DashDotLine</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>367</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="pushButtonServerPrevPage">
-         <property name="text">
-          <string>前一页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButtonServerNextPage">
-         <property name="text">
-          <string>后一页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelSwitchPage">
-         <property name="text">
-          <string>转到第</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEditPageNumber"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelPage">
-         <property name="text">
-          <string>页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButtonGO">
-         <property name="text">
-          <string>GO</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="labelServerCurrentPage">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelServerTotalPages">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelServerTotalItems">
-      <property name="geometry">
-       <rect>
-        <x>1010</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>数据库信息</string>
-     </attribute>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>367</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="pushButtonDBPrevPage">
-         <property name="text">
-          <string>前一页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButtonDBNextPage">
-         <property name="text">
-          <string>后一页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelDBSwitchPage">
-         <property name="text">
-          <string>转到第</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEditDBPageNumber"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="labelDBPage">
-         <property name="text">
-          <string>页</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButtonDBGO">
-         <property name="text">
-          <string>GO</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QTableView" name="tableViewDBProperty">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>30</y>
-        <width>1170</width>
-        <height>271</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-radius:5px;
-font: 11pt &quot;华文中宋&quot;;
-color: rgb(0, 0, 0);
-selection-background-color: rgb(170, 255, 127);
-selection-color: rgb(0, 0, 0);
-gridline-color: rgb(130, 130, 130);
-</string>
-      </property>
-      <property name="editTriggers">
-       <set>QAbstractItemView::AllEditTriggers</set>
-      </property>
-      <property name="dragEnabled">
-       <bool>true</bool>
-      </property>
-      <property name="gridStyle">
-       <enum>Qt::DashDotLine</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelDBTotalPages">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelDBCurrentPage">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelDBTotalItems">
-      <property name="geometry">
-       <rect>
-        <x>1010</x>
-        <y>305</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 127);
-border-radius:5px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </widget>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1185</width>
+     <width>1189</width>
      <height>25</height>
     </rect>
    </property>

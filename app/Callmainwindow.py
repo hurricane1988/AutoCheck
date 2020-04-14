@@ -56,7 +56,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         # 调用生产饼图函数.
         mainpip()
         # 调用资产表格显示函数
-        self.setTableView()
+        self.setServerTableView()
         # 调用图表显示函数.
         self.showgraph()
 
@@ -67,7 +67,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.move((SCREEN.width() - SIZE.width()) / 2, (SCREEN.height() - SIZE.height()) / 2)
 
     # 设置表格
-    def setTableView(self):
+    def setServerTableView(self):
         """服务器资产清单Table显示"""
         # 当前页.
         self.currentPage = 0
@@ -105,15 +105,15 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         # 记录查询
         self.recordQuery(0)
         # 设置模型
-        self.tableViewProperty.setModel(self.queryModel)
+        self.tableViewServersProperty.setModel(self.queryModel)
 
         #print('totalRecrodCount=' + str(self.totalRecrodCount))
         #print('totalPage=' + str(self.totalPage))
 
-        self.tableViewProperty.horizontalHeader().setStretchLastSection(True)
-        self.tableViewProperty.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.pushButtonPrevPage.clicked.connect(self.onPrevButtonClick)
-        self.pushButtonNextPage.clicked.connect(self.onNextButtonClick)
+        self.tableViewServersProperty.horizontalHeader().setStretchLastSection(True)
+        self.tableViewServersProperty.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.pushButtonServerPrevPage.clicked.connect(self.onPrevButtonClick)
+        self.pushButtonServerNextPage.clicked.connect(self.onNextButtonClick)
         self.pushButtonGO.clicked.connect(self.onSwitchPageButtonClick)
 
         # 设置表格表头
@@ -148,29 +148,29 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
     # 刷新状态
     def updateStatus(self):
         szCurrentText = ("当前第%d页" % self.currentPage)
-        self.labelCurrentPage.setText(szCurrentText)
+        self.labelServerCurrentPage.setText(szCurrentText)
 
         # 设置按钮是否可用
         if self.currentPage == 1:
-            self.pushButtonPrevPage.setEnabled(False)
-            self.pushButtonNextPage.setEnabled(True)
+            self.pushButtonServerPrevPage.setEnabled(False)
+            self.pushButtonServerNextPage.setEnabled(True)
         elif self.currentPage == self.totalPage:
-            self.pushButtonPrevPage.setEnabled(True)
-            self.pushButtonNextPage.setEnabled(False)
+            self.pushButtonServerPrevPage.setEnabled(True)
+            self.pushButtonServerNextPage.setEnabled(False)
         else:
-            self.pushButtonPrevPage.setEnabled(True)
-            self.pushButtonNextPage.setEnabled(True)
+            self.pushButtonServerPrevPage.setEnabled(True)
+            self.pushButtonServerNextPage.setEnabled(True)
 
     # 设置总数页文本
     def setTotalPageLabel(self):
         PageCountText = ("总共%d页" % self.totalPage)
-        self.labelTotalPages.setText(PageCountText)
+        self.labelServerTotalPages.setText(PageCountText)
 
     # 设置总记录数
     def setTotalRecordLabel(self):
         TotalRecordText = ("共%d条" % self.totalRecrodCount)
         #print('*** setTotalRecordLabel szTotalRecordText=' + TotalRecordText)
-        self.labelTotalItems.setText(TotalRecordText)
+        self.labelServerTotalItems.setText(TotalRecordText)
 
     # 前一页按钮按下
     def onPrevButtonClick(self):
