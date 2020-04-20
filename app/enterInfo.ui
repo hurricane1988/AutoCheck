@@ -1128,14 +1128,8 @@ background-color: rgb(255, 255, 255);</string>
        <string notr="true">border-radius:5px;
 background-color: rgb(255, 255, 255);</string>
       </property>
-      <property name="echoMode">
-       <enum>QLineEdit::Normal</enum>
-      </property>
       <property name="placeholderText">
        <string>请输入数据库实例名称</string>
-      </property>
-      <property name="clearButtonEnabled">
-       <bool>true</bool>
       </property>
      </widget>
     </widget>

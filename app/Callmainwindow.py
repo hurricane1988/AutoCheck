@@ -11,6 +11,7 @@
 import sys,re
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt,QUrl
+from PyQt5.QtSql import QSqlQueryModel
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget,QHeaderView,QTableView
 from mainwindow import Ui_MainWindow
 from CallMD5 import md5encrypt
@@ -20,7 +21,8 @@ from CallChangePassword import resetPassWord
 from CallIpResolve import ipResolveWindow
 from CallExportInfo import exportInfoWindows
 from graph_generate import mainpip
-from Configuration import *
+# from CallTableView import propertyTableView
+from Configuration import database,query,MSG,queryModelDB,queryModelServer
 
 
 # 主窗口调用主类.
@@ -55,8 +57,10 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.actionExport.triggered.connect(self.exportInfo)
         # 调用生产饼图函数.
         mainpip()
-        # 调用资产表格显示函数
+        # 调用服务器资产表格显示函数.
         self.setServerTableView()
+        # 调用数据库资产表格显示函数.
+        self.setDBTableView()
         # 调用图表显示函数.
         self.showgraph()
 
@@ -66,95 +70,79 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         SIZE = self.geometry()
         self.move((SCREEN.width() - SIZE.width()) / 2, (SCREEN.height() - SIZE.height()) / 2)
 
-    # 设置表格
+    # 设置服务器表格表格
     def setServerTableView(self):
-        """服务器资产清单Table显示"""
-        # 当前页.
-        self.currentPage = 0
+        # 服务器资产清单Table显示
         # 总页数
-        self.totalPage = 0
+        self.ServerTotalPage = 0
         # 每页显示记录数.
-        self.PageRecordCount = 8
-        # 查询模型
-        self.queryModel = None
-        # 声明查询模型
-        self.queryModel = QSqlQueryModel(self)
-        # 数据表
-        self.db = QSqlDatabase.addDatabase('QSQLITE')
-        # 设置数据库名称
-        self.db.setDatabaseName('rundb.db')
+        self.ServerPageRecordCount = 8
         # 总记录数
-        self.totalRecordCount = 0
+        self.ServerTotalRecordCount = 0
         # 总记录标签.
-        self.totalRecordLabel = None
-        # 打开数据库
-        self.db.open()
+        self.ServerTotalRecordLabel = None
         # 设置当前页
-        self.currentPage = 1
+        self.ServerCurrentPage = 1
         # 得到总记录数
-        self.totalRecrodCount = self.getTotalRecordCount()
+        self.ServerTotalRecrodCount = self.ServergetTotalRecordCount()
         # 得到总页数
-        self.totalPage = self.getPageCount()
+        self.ServerTotalPage = self.getPageCount()
         # 刷新状态
-        self.updateStatus()
+        self.ServerupdateStatus()
         # 设置总页数文本
-        self.setTotalPageLabel()
+        self.ServersetTotalPageLabel()
         # 设置总记录数
-        self.setTotalRecordLabel()
-
+        self.ServersetTotalRecordLabel()
+        # 申明服务器查询模型.
+        #self.queryModelServer = None
+        #self.queryModelServer = QSqlQueryModel(self)
         # 记录查询
-        self.recordQuery(0)
+        self.recordQueryServer(0)
         # 设置模型
-        self.tableViewServersProperty.setModel(self.queryModel)
-
-        #print('totalRecrodCount=' + str(self.totalRecrodCount))
-        #print('totalPage=' + str(self.totalPage))
-
+        self.tableViewServersProperty.setModel(queryModelServer)
         self.tableViewServersProperty.horizontalHeader().setStretchLastSection(True)
         self.tableViewServersProperty.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.pushButtonServerPrevPage.clicked.connect(self.onPrevButtonClick)
-        self.pushButtonServerNextPage.clicked.connect(self.onNextButtonClick)
-        self.pushButtonGO.clicked.connect(self.onSwitchPageButtonClick)
+        self.pushButtonServerPrevPage.clicked.connect(self.ServeronPrevButtonClick)
+        self.pushButtonServerNextPage.clicked.connect(self.ServeronNextButtonClick)
+        self.pushButtonGO.clicked.connect(self.ServeronSwitchPageButtonClick)
 
         # 设置表格表头
-        self.queryModel.setHeaderData(0, Qt.Horizontal, "编号")
-        self.queryModel.setHeaderData(1, Qt.Horizontal, "IP地址")
-        self.queryModel.setHeaderData(2, Qt.Horizontal, "系统版本")
-        self.queryModel.setHeaderData(3, Qt.Horizontal, "登录账号")
-        self.queryModel.setHeaderData(4, Qt.Horizontal, "登录密码")
-        self.queryModel.setHeaderData(5, Qt.Horizontal, "用途描述")
-        self.queryModel.setHeaderData(6, Qt.Horizontal, "系统类型")
+        queryModelServer.setHeaderData(0, Qt.Horizontal, "编号")
+        queryModelServer.setHeaderData(1, Qt.Horizontal, "IP地址")
+        queryModelServer.setHeaderData(2, Qt.Horizontal, "系统版本")
+        queryModelServer.setHeaderData(3, Qt.Horizontal, "登录账号")
+        queryModelServer.setHeaderData(4, Qt.Horizontal, "登录密码")
+        queryModelServer.setHeaderData(5, Qt.Horizontal, "用途描述")
+        queryModelServer.setHeaderData(6, Qt.Horizontal, "系统类型")
 
     # 得到记录数
-    def getTotalRecordCount(self):
-        self.queryModel.setQuery("select * from t_server")
-        rowCount = self.queryModel.rowCount()
-        #print('rowCount=' + str(rowCount))
+    def ServergetTotalRecordCount(self):
+        queryModelServer.setQuery("select * from t_server")
+        rowCount = queryModelServer.rowCount()
         return rowCount
 
     # 得到页数
     def getPageCount(self):
-        if self.totalRecrodCount % self.PageRecordCount == 0:
-            return (self.totalRecrodCount / self.PageRecordCount)
+        if self.ServerTotalRecrodCount % self.ServerPageRecordCount == 0:
+            return (self.ServerTotalRecrodCount / self.ServerPageRecordCount)
         else:
-            return (self.totalRecrodCount / self.PageRecordCount + 1)
+            return (self.ServerTotalRecrodCount / self.ServerPageRecordCount + 1)
 
     # 记录查询
-    def recordQuery(self, limitIndex):
-        Query = ("select * from t_server limit %d,%d" % (limitIndex, self.PageRecordCount))
-        self.queryModel.setQuery(Query)
-        #print('query sql=' + Query)
+    def recordQueryServer(self, limitIndex):
+        SQLString = ("select * from t_server limit %d,%d" % (limitIndex, self.ServerPageRecordCount))
+        queryModelServer.setQuery(SQLString)
 
     # 刷新状态
-    def updateStatus(self):
-        szCurrentText = ("当前第%d页" % self.currentPage)
+    def ServerupdateStatus(self):
+        szCurrentText = ("当前第%d页" % self.ServerCurrentPage)
         self.labelServerCurrentPage.setText(szCurrentText)
 
         # 设置按钮是否可用
-        if self.currentPage == 1:
+        if self.ServerCurrentPage == 1:
             self.pushButtonServerPrevPage.setEnabled(False)
             self.pushButtonServerNextPage.setEnabled(True)
-        elif self.currentPage == self.totalPage:
+        elif self.ServerCurrentPage == self.ServerTotalPage:
             self.pushButtonServerPrevPage.setEnabled(True)
             self.pushButtonServerNextPage.setEnabled(False)
         else:
@@ -162,34 +150,31 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
             self.pushButtonServerNextPage.setEnabled(True)
 
     # 设置总数页文本
-    def setTotalPageLabel(self):
-        PageCountText = ("总共%d页" % self.totalPage)
+    def ServersetTotalPageLabel(self):
+        PageCountText = ("总共%d页" % self.ServerTotalPage)
         self.labelServerTotalPages.setText(PageCountText)
 
     # 设置总记录数
-    def setTotalRecordLabel(self):
-        TotalRecordText = ("共%d条" % self.totalRecrodCount)
-        #print('*** setTotalRecordLabel szTotalRecordText=' + TotalRecordText)
+    def ServersetTotalRecordLabel(self):
+        TotalRecordText = ("共%d条" % self.ServerTotalRecrodCount)
         self.labelServerTotalItems.setText(TotalRecordText)
 
     # 前一页按钮按下
-    def onPrevButtonClick(self):
-        #print('*** onPrevButtonClick ')
-        limitIndex = (self.currentPage - 2) * self.PageRecordCount
-        self.recordQuery(limitIndex)
-        self.currentPage -= 1
-        self.updateStatus()
+    def ServeronPrevButtonClick(self):
+        limitIndex = (self.ServerCurrentPage - 2) * self.ServerPageRecordCount
+        self.recordQueryServer(limitIndex)
+        self.ServerCurrentPage -= 1
+        self.ServerupdateStatus()
 
     # 后一页按钮按下
-    def onNextButtonClick(self):
-        #print('*** onNextButtonClick ')
-        limitIndex = self.currentPage * self.PageRecordCount
-        self.recordQuery(limitIndex)
-        self.currentPage += 1
-        self.updateStatus()
+    def ServeronNextButtonClick(self):
+        limitIndex = self.ServerCurrentPage * self.ServerPageRecordCount
+        self.recordQueryServer(limitIndex)
+        self.ServerCurrentPage += 1
+        self.ServerupdateStatus()
 
     # 转到页按钮按下
-    def onSwitchPageButtonClick(self):
+    def ServeronSwitchPageButtonClick(self):
         # 得到输入字符串
         szText = self.lineEditPageNumber.text()
         # 数字正则表达式
@@ -210,19 +195,160 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         # 得到页数
         pageIndex = int(szText)
         # 判断是否有指定页
-        if pageIndex > self.totalPage or pageIndex < 1:
+        if pageIndex > self.ServerTotalPage or pageIndex < 1:
             QMessageBox.information(self, "提示", "没有指定的页面，请重新输入")
             return
 
         # 得到查询起始行号
-        limitIndex = (pageIndex - 1) * self.PageRecordCount
+        limitIndex = (pageIndex - 1) * self.ServerPageRecordCount
 
         # 记录查询
-        self.recordQuery(limitIndex)
+        self.recordQueryServer(limitIndex)
         # 设置当前页
-        self.currentPage = pageIndex
+        self.ServercurrentPage = pageIndex
         # 刷新状态
-        self.updateStatus()
+        self.ServerupdateStatus()
+###############################################################
+# 描述: 数据库表格视图函数                                       #
+###############################################################
+    def setDBTableView(self):
+        # 当前页.
+        self.dbcurrentPage = 0
+        # 总页数
+        self.dbtotalPage = 0
+        # 每页显示记录数.
+        self.dbPageRecordCount = 8
+        # 总记录数
+        self.dbtotalRecordCount = 0
+        # 总记录标签.
+        self.dbtotalRecordLabel = None
+        # 设置当前页
+        self.dbcurrentPage = 1
+        # 得到总记录数
+        self.dbtotalRecrodCount = self.dbgetTotalRecordCount()
+        # 得到总页数
+        self.dbtotalPage = self.dbgetPageCount()
+        # 刷新状态
+        self.dbupdateStatus()
+        # 设置总页数文本
+        self.dbsetTotalPageLabel()
+        # 设置总记录数
+        self.dbsetTotalRecordLabel()
+        # 记录查询
+        self.dbrecordQuery(0)
+        # 设置模型
+        self.tableViewDBProperty.setModel(queryModelDB)
+        self.tableViewDBProperty.horizontalHeader().setStretchLastSection(True)
+        self.tableViewDBProperty.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.pushButtonDBPrevPage.clicked.connect(self.dbonPrevButtonClick)
+        self.pushButtonDBNextPage.clicked.connect(self.dbonNextButtonClick)
+        self.pushButtonDBGO.clicked.connect(self.dbonSwitchPageButtonClick)
+
+        # 设置表格表头
+        queryModelDB.setHeaderData(0, Qt.Horizontal, "编号")
+        queryModelDB.setHeaderData(1, Qt.Horizontal, "IP地址")
+        queryModelDB.setHeaderData(2, Qt.Horizontal, "数据库类型")
+        queryModelDB.setHeaderData(3, Qt.Horizontal, "数据库版本")
+        queryModelDB.setHeaderData(4, Qt.Horizontal, "数据库名称")
+        queryModelDB.setHeaderData(5, Qt.Horizontal, "数据库账号")
+        queryModelDB.setHeaderData(6, Qt.Horizontal, "数据库密码")
+        queryModelDB.setHeaderData(7, Qt.Horizontal, "数据库用途")
+
+    # 得到记录数
+    def dbgetTotalRecordCount(self):
+        queryModelDB.setQuery("select * from t_database")
+        rowCount = queryModelDB.rowCount()
+        return rowCount
+
+    # 得到页数
+    def dbgetPageCount(self):
+        if self.dbtotalRecrodCount % self.dbPageRecordCount == 0:
+            return (self.dbtotalRecrodCount / self.dbPageRecordCount)
+        else:
+            return (self.dbtotalRecrodCount / self.dbPageRecordCount + 1)
+
+    # 记录查询
+    def dbrecordQuery(self, limitIndex):
+        Query = ("select * from t_database limit %d,%d" % (limitIndex, self.dbPageRecordCount))
+        queryModelDB.setQuery(Query)
+
+    # 刷新状态
+    def dbupdateStatus(self):
+        szCurrentText = ("当前第%d页" % self.dbcurrentPage)
+        self.labelDBCurrentPage.setText(szCurrentText)
+
+        # 设置按钮是否可用
+        if self.dbcurrentPage == 1:
+            self.pushButtonDBPrevPage.setEnabled(False)
+            self.pushButtonDBNextPage.setEnabled(True)
+        elif self.dbcurrentPage == self.dbtotalPage:
+            self.pushButtonDBPrevPage.setEnabled(True)
+            self.pushButtonDBNextPage.setEnabled(False)
+        else:
+            self.pushButtonDBPrevPage.setEnabled(True)
+            self.pushButtonDBNextPage.setEnabled(True)
+
+    # 设置总数页文本
+    def dbsetTotalPageLabel(self):
+        PageCountText = ("总共%d页" % self.dbtotalPage)
+        self.labelDBTotalPages.setText(PageCountText)
+
+    # 设置总记录数
+    def dbsetTotalRecordLabel(self):
+        TotalRecordText = ("共%d条" % self.dbtotalRecrodCount)
+        #print('*** setTotalRecordLabel szTotalRecordText=' + TotalRecordText)
+        self.labelDBTotalItems.setText(TotalRecordText)
+
+    # 前一页按钮按下
+    def dbonPrevButtonClick(self):
+        limitIndex = (self.dbcurrentPage - 2) * self.dbPageRecordCount
+        self.dbrecordQuery(limitIndex)
+        self.dbcurrentPage -= 1
+        self.dbupdateStatus()
+
+    # 后一页按钮按下
+    def dbonNextButtonClick(self):
+        #print('*** onNextButtonClick ')
+        limitIndex = self.dbcurrentPage * self.dbPageRecordCount
+        self.dbrecordQuery(limitIndex)
+        self.dbcurrentPage += 1
+        self.dbupdateStatus()
+
+    # 转到页按钮按下
+    def dbonSwitchPageButtonClick(self):
+        # 得到输入字符串
+        szText = self.lineEditDBPageNumber.text()
+        # 数字正则表达式
+        #pattern = re.compile(r'^[-+]?[0-9]+\.[0-9]+$')
+        pattern = re.compile(r'^[0-9]+\.[0-9]+$')
+        match = pattern.match(szText)
+
+        # 判断是否为数字
+        if not match:
+            QMessageBox.information(self, "提示", "请输入数字")
+            return
+
+        # 是否为空
+        if szText == '':
+            QMessageBox.information(self, "提示", "请输入跳转页面")
+            return
+
+        # 得到页数
+        pageIndex = int(szText)
+        # 判断是否有指定页
+        if pageIndex > self.dbtotalPage or pageIndex < 1:
+            QMessageBox.information(self, "提示", "没有指定的页面，请重新输入")
+            return
+
+        # 得到查询起始行号
+        limitIndex = (pageIndex - 1) * self.dbPageRecordCount
+
+        # 记录查询
+        self.dbrecordQuery(limitIndex)
+        # 设置当前页
+        self.dbcurrentPage = pageIndex
+        # 刷新状态
+        self.dbupdateStatus()
 
     # 关于我们帮助文档说明.
     def about_us(self):

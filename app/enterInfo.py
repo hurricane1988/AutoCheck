@@ -368,8 +368,6 @@ class Ui_EnterInfo(object):
         self.lineEditDatabaseName.setGeometry(QtCore.QRect(90, 150, 251, 20))
         self.lineEditDatabaseName.setStyleSheet("border-radius:5px;\n"
 "background-color: rgb(255, 255, 255);")
-        self.lineEditDatabaseName.setEchoMode(QtWidgets.QLineEdit.Normal)
-        self.lineEditDatabaseName.setClearButtonEnabled(True)
         self.lineEditDatabaseName.setObjectName("lineEditDatabaseName")
         self.tabWidgetEnterInfo.addTab(self.tabDatabases, "")
 

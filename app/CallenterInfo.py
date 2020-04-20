@@ -51,7 +51,7 @@ class enterWindow(QtWidgets.QWidget,Ui_EnterInfo):
                     QtWidgets.QMessageBox.warning(self,'错误提示',"信息录入失败\n'{0}".format(e),QtWidgets.QMessageBox.Cancel)
                     pass
                 finally:
-                    pass
+                    connect.close()
 
             except AttributeError:
                 try:
@@ -83,7 +83,7 @@ class enterWindow(QtWidgets.QWidget,Ui_EnterInfo):
                     QtWidgets.QMessageBox.warning(self,'错误提示',"信息录入失败\n'{0}".format(e),QtWidgets.QMessageBox.Cancel)
                     pass
                 finally:
-                    pass
+                    connect.close()
 
             except AttributeError:
                 try:

@@ -19,6 +19,8 @@ database = QSqlDatabase.addDatabase('QSQLITE')
 database.setDatabaseName('rundb.db')
 database.open()
 query = QSqlQuery()
+queryModelServer = QSqlQueryModel()
+queryModelDB = QSqlQueryModel()
 
 connect = sqlite3.connect('rundb.db')
 cursor = connect.cursor()
