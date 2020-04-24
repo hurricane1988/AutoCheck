@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>180</height>
+    <width>307</width>
+    <height>127</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,8 +30,8 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>381</width>
-     <height>161</height>
+     <width>291</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="font">
@@ -54,7 +54,7 @@ background-color: lightgray;</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>50</y>
+      <y>40</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -66,8 +66,8 @@ background-color: lightgray;</string>
    <widget class="QRadioButton" name="radioButtonSelectDatabases">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>50</y>
+      <x>170</x>
+      <y>40</y>
       <width>111</width>
       <height>16</height>
      </rect>
@@ -76,24 +76,11 @@ background-color: lightgray;</string>
      <string>导出数据库信息</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButtonSelectAll">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>50</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导出全部</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonExport">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>110</y>
+      <x>20</x>
+      <y>70</y>
       <width>91</width>
       <height>23</height>
      </rect>
@@ -117,8 +104,8 @@ selection-background-color: rgb(255, 85, 0);
    <widget class="QPushButton" name="pushButtonCancel">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>110</y>
+      <x>190</x>
+      <y>70</y>
       <width>81</width>
       <height>23</height>
      </rect>

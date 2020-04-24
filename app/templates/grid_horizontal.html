@@ -7,11 +7,11 @@
 
 </head>
 <body>
-    <div id="405a79ae02be49e0881a8ad28e5a755d" class="chart-container" style="width:900px; height:500px;"></div>
+    <div id="da9f5fa8bb1841ec80b553f7198b239a" class="chart-container" style="width:900px; height:500px;"></div>
     <script>
-        var chart_405a79ae02be49e0881a8ad28e5a755d = echarts.init(
-            document.getElementById('405a79ae02be49e0881a8ad28e5a755d'), 'white', {renderer: 'canvas'});
-        var option_405a79ae02be49e0881a8ad28e5a755d = {
+        var chart_da9f5fa8bb1841ec80b553f7198b239a = echarts.init(
+            document.getElementById('da9f5fa8bb1841ec80b553f7198b239a'), 'white', {renderer: 'canvas'});
+        var option_da9f5fa8bb1841ec80b553f7198b239a = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -52,16 +52,16 @@
             "clockwise": true,
             "data": [
                 {
-                    "name": "Linux\u7cfb\u7edf",
-                    "value": 16
-                },
-                {
-                    "name": "AIX\u7cfb\u7edf",
-                    "value": 3
-                },
-                {
-                    "name": "Windows\u7cfb\u7edf",
+                    "name": "Oracle 19C",
                     "value": 1
+                },
+                {
+                    "name": "Oracle 11g",
+                    "value": 1
+                },
+                {
+                    "name": "Oracle 9i",
+                    "value": 2
                 }
             ],
             "radius": [
@@ -123,16 +123,20 @@
             "clockwise": true,
             "data": [
                 {
+                    "name": "RedHat 6.9 X64",
+                    "value": 1
+                },
+                {
+                    "name": "Redhat7.9 x64",
+                    "value": 1
+                },
+                {
                     "name": "CentOS Linux release 8",
                     "value": 1
                 },
                 {
-                    "name": "Centos 8.0",
+                    "name": "Windows Server 2012 DC",
                     "value": 1
-                },
-                {
-                    "name": "windows2009 server",
-                    "value": 10
                 },
                 {
                     "name": "AIX 7.1",
@@ -143,24 +147,20 @@
                     "value": 1
                 },
                 {
-                    "name": "Redhat7.9 x64",
+                    "name": "Others",
                     "value": 1
                 },
                 {
-                    "name": "Windows Server 2012 DC",
-                    "value": 1
+                    "name": "windows2009 server",
+                    "value": 10
                 },
                 {
-                    "name": "RedHat 6.9 X64",
+                    "name": "Centos 8.0",
                     "value": 1
                 },
                 {
                     "name": "Red Hat Enterprise Linux Server release 7",
                     "value": 2
-                },
-                {
-                    "name": "Others",
-                    "value": 1
                 }
             ],
             "radius": [
@@ -221,15 +221,15 @@
     "legend": [
         {
             "data": [
-                "Linux\u7cfb\u7edf",
-                "AIX\u7cfb\u7edf",
-                "Windows\u7cfb\u7edf"
+                "Oracle 19C",
+                "Oracle 11g",
+                "Oracle 9i"
             ],
             "selected": {},
             "type": "scroll",
             "show": true,
             "left": "85%",
-            "top": "55%",
+            "top": "65%",
             "orient": "vertical",
             "padding": 5,
             "itemGap": 10,
@@ -238,16 +238,16 @@
         },
         {
             "data": [
+                "RedHat 6.9 X64",
+                "Redhat7.9 x64",
                 "CentOS Linux release 8",
-                "Centos 8.0",
-                "windows2009 server",
+                "Windows Server 2012 DC",
                 "AIX 7.1",
                 "SUSE Linux 12",
-                "Redhat7.9 x64",
-                "Windows Server 2012 DC",
-                "RedHat 6.9 X64",
-                "Red Hat Enterprise Linux Server release 7",
-                "Others"
+                "Others",
+                "windows2009 server",
+                "Centos 8.0",
+                "Red Hat Enterprise Linux Server release 7"
             ],
             "selected": {},
             "type": "scroll",
@@ -284,7 +284,7 @@
     ],
     "grid": [
         {
-            "bottom": "60%",
+            "bottom": "10%",
             "containLabel": false
         },
         {
@@ -293,7 +293,7 @@
         }
     ]
 };
-        chart_405a79ae02be49e0881a8ad28e5a755d.setOption(option_405a79ae02be49e0881a8ad28e5a755d);
+        chart_da9f5fa8bb1841ec80b553f7198b239a.setOption(option_da9f5fa8bb1841ec80b553f7198b239a);
     </script>
 </body>
 </html>

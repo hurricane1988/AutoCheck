@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.labelProperty.setObjectName("labelProperty")
         self.widgetGraph = QtWebEngineWidgets.QWebEngineView(self.mainWindows)
         self.widgetGraph.setGeometry(QtCore.QRect(10, 385, 1171, 411))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.widgetGraph.sizePolicy().hasHeightForWidth())

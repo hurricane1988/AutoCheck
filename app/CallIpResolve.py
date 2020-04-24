@@ -14,10 +14,10 @@ class ipResolveWindow(QtWidgets.QWidget, Ui_IpResolve):
         self.setWindowIcon(QtGui.QIcon('login.ico'))
         self.setupUi(self)
 
-        self.pushButtonResolve.clicked.connect(self.showResolveResults)
+        self.pushButtonResolve.clicked.connect(self._showResolveResults)
 
     # IP地址格式判断函数.
-    def isIP(self,ip):
+    def _isIP(self,ip):
         try:
             IPy.IP(ip)
             return True
@@ -26,11 +26,11 @@ class ipResolveWindow(QtWidgets.QWidget, Ui_IpResolve):
             return False
 
     # 公网IP地址信息查询结果函数.
-    def showResolveResults(self):
+    def _showResolveResults(self):
         url = "http://ip-api.com/json/"
         IP = self.lineEdit.text()
         try:
-            if self.isIP(IP) is True:
+            if self._isIP(IP) is True:
                 headers = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
                 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
                 # parameter = {'ip': self.lineEdit.text()}
@@ -51,4 +51,3 @@ class ipResolveWindow(QtWidgets.QWidget, Ui_IpResolve):
         except Exception as e:
             QtWidgets.QMessageBox.warning(self,'错误提示','无法访问互联网,请检查网络连接!')
             pass
-

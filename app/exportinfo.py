@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'exportFiles.ui'
+# Form implementation generated from reading ui file 'exportinfo.ui'
 #
 # Created by: PyQt5 UI code generator 5.9.2
 #
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FormExport(object):
     def setupUi(self, FormExport):
         FormExport.setObjectName("FormExport")
-        FormExport.resize(399, 180)
+        FormExport.resize(307, 127)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -19,7 +19,7 @@ class Ui_FormExport(object):
         FormExport.setSizePolicy(sizePolicy)
         FormExport.setMaximumSize(QtCore.QSize(399, 180))
         self.groupBoxExport = QtWidgets.QGroupBox(FormExport)
-        self.groupBoxExport.setGeometry(QtCore.QRect(10, 10, 381, 161))
+        self.groupBoxExport.setGeometry(QtCore.QRect(10, 10, 291, 111))
         font = QtGui.QFont()
         font.setFamily("华文中宋")
         font.setPointSize(11)
@@ -29,16 +29,13 @@ class Ui_FormExport(object):
         self.groupBoxExport.setAlignment(QtCore.Qt.AlignCenter)
         self.groupBoxExport.setObjectName("groupBoxExport")
         self.radioButtonSelectServer = QtWidgets.QRadioButton(self.groupBoxExport)
-        self.radioButtonSelectServer.setGeometry(QtCore.QRect(20, 50, 121, 16))
+        self.radioButtonSelectServer.setGeometry(QtCore.QRect(20, 40, 121, 16))
         self.radioButtonSelectServer.setObjectName("radioButtonSelectServer")
         self.radioButtonSelectDatabases = QtWidgets.QRadioButton(self.groupBoxExport)
-        self.radioButtonSelectDatabases.setGeometry(QtCore.QRect(160, 50, 111, 16))
+        self.radioButtonSelectDatabases.setGeometry(QtCore.QRect(170, 40, 111, 16))
         self.radioButtonSelectDatabases.setObjectName("radioButtonSelectDatabases")
-        self.radioButtonSelectAll = QtWidgets.QRadioButton(self.groupBoxExport)
-        self.radioButtonSelectAll.setGeometry(QtCore.QRect(290, 50, 81, 16))
-        self.radioButtonSelectAll.setObjectName("radioButtonSelectAll")
         self.pushButtonExport = QtWidgets.QPushButton(self.groupBoxExport)
-        self.pushButtonExport.setGeometry(QtCore.QRect(40, 110, 91, 23))
+        self.pushButtonExport.setGeometry(QtCore.QRect(20, 70, 91, 23))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(11)
@@ -49,7 +46,7 @@ class Ui_FormExport(object):
 "")
         self.pushButtonExport.setObjectName("pushButtonExport")
         self.pushButtonCancel = QtWidgets.QPushButton(self.groupBoxExport)
-        self.pushButtonCancel.setGeometry(QtCore.QRect(260, 110, 81, 23))
+        self.pushButtonCancel.setGeometry(QtCore.QRect(190, 70, 81, 23))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(11)
@@ -68,7 +65,6 @@ class Ui_FormExport(object):
         self.groupBoxExport.setTitle(_translate("FormExport", "选择导出信息"))
         self.radioButtonSelectServer.setText(_translate("FormExport", "导出服务器系信息"))
         self.radioButtonSelectDatabases.setText(_translate("FormExport", "导出数据库信息"))
-        self.radioButtonSelectAll.setText(_translate("FormExport", "导出全部"))
         self.pushButtonExport.setText(_translate("FormExport", "点击导出"))
         self.pushButtonCancel.setText(_translate("FormExport", "点击取消"))
 

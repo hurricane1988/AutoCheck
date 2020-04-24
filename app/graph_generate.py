@@ -48,6 +48,32 @@ def osType():
         type_data.append(data)
     return type_data
 
+# 获取数据库
+def getDBVersionNumber(dbversion):
+    if query.exec("select count(*) from t_database where dbversion='{0}'".format(dbversion)):
+        while query.next():
+            number = query.value(0)
+            result = [dbversion,number]
+            return result
+
+# 获取指定关键字中的数量.
+def getDBNumber(queryString):
+    if query.exec("select {0} from t_database".format(queryString)):
+        data = []
+        while query.next():
+            line = query.value(0)
+            data.append(line)
+        return set(data)
+
+# 获取数据库版本饼图.
+def dbVersionPIP():
+    pip_data = []
+    datas = getDBNumber(queryString='dbversion')
+    for line in datas:
+        data = getDBVersionNumber(dbversion=line)
+        pip_data.append(data)
+    return pip_data
+
 osVersionPip = (
     Pie()
     .add(
@@ -96,11 +122,11 @@ osVersionPip = (
     #.render("./templates/osVersionPip.html")
 )
 
-osTypePip = (
+dbVersionPip = (
     Pie()
     .add(
         "",
-        osType(),
+        dbVersionPIP(),
         radius=["55", "40%"],
         center=["38%", "80%"],
         label_opts=opts.LabelOpts(
@@ -138,8 +164,8 @@ osTypePip = (
     )
     #.set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
     .set_global_opts(
-        #title_opts=opts.TitleOpts(title="Pie-Legend 滚动"),
-        legend_opts=opts.LegendOpts(type_="scroll", pos_top="55%" ,pos_left="85%",orient="vertical",is_show=True),
+        #title_opts=opts.TitleOpts(title="系统版本饼图",pos_top="65%", pos_left="1%"),
+        legend_opts=opts.LegendOpts(type_="scroll", pos_top="65%" ,pos_left="85%",orient="vertical",is_show=True),
     )
     #.render("./templates/osVersionPip.html")
 )
@@ -147,7 +173,7 @@ osTypePip = (
 
 grid = (
     Grid()
-    .add(osTypePip,grid_opts=opts.GridOpts(pos_bottom="60%"))
+    .add(dbVersionPip, grid_opts=opts.GridOpts(pos_bottom="10%"))
     .add(osVersionPip, grid_opts=opts.GridOpts(pos_top="60%"))
     .render("./templates/grid_horizontal.html")
 )
