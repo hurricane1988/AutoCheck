@@ -55,7 +55,7 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         # 主窗口关闭选项.
         self.actionCancel.triggered.connect(self.close)
         # 域名解析窗口.
-        self.actionDNS.triggered.connect(self._dnsShow)
+        self.actionDNS.triggered.connect(self._ShowDNS)
         # 主窗口文件导出槽与函数绑定.
         self.actionExport.triggered.connect(self._exportInfo)
         # 调用生产饼图函数.
@@ -383,9 +383,9 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         self.resetpassword.show()
 
     # 域名解析函数.
-    def _dnsShow(self):
-        dnsWindow = MyWindowsDNS()
-        dnsWindow.show()
+    def _ShowDNS(self):
+        self.dnsWindow = MyWindowsDNS()
+        self.dnsWindow.show()
 
     # 文件信息导出主函数.
     def _exportInfo(self):

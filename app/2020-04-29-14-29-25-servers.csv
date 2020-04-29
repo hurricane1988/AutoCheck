@@ -1,0 +1,21 @@
+ID,IP地址,操作系统版本,用户名称,用户密码,描述,系统类型
+6,192.168.10.100,Redhat7.9 x64,root,system,综服核心数据库服务器,AIX系统
+8,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+9,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+10,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+11,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+12,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+13,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+14,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+15,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+16,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+17,10.10.10.100,windows2009 server,admin,system,windows核心数据库服务器,Linux系统
+19,192.126.20.22,Centos 8.0,root,system,FSP综服服务器,Linux系统
+20,192.168.10.10,AIX 7.1,root,hxyd2019@123,测试服务器,AIX系统
+21,10.10.10.130,Windows Server 2012 DC,osadmin,system,测试windows服务器,Windows系统
+24,10.10.10.100,RedHat 6.9 X64,root,system,was应用服务器,Linux系统
+25,10.10.251.1,Red Hat Enterprise Linux Server release 7,osadmin,system,asdf ,Linux系统
+26,10.10.10.2,Red Hat Enterprise Linux Server release 7,root,system,FSP服务器,Linux系统
+27,10.10.110.45,SUSE Linux 12,osadmin,system,核心信息,Linux系统
+28,10.10.10.101,CentOS Linux release 8,root,system,开发测试服务器,AIX系统
+29,10.10.10.99,Others,root,system,核心测试服务器,Linux系统

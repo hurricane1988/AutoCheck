@@ -180,6 +180,3 @@ grid = (
 
 def mainpip():
     grid
-
-if __name__ == '__main__':
-    mainpip()

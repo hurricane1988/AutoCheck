@@ -13,9 +13,9 @@ class MyWindowsDNS(QtWidgets.QWidget,Ui_FormDNS):
     def __init__(self, parent=None):
         super(MyWindowsDNS, self).__init__(parent)
 
+        self.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('login.ico'))
         self.setFixedSize(430, 158)
-        self.setupUi(self)
 
         # 域名解析按钮槽与函数绑定.
         self.pushButtonDNS.clicked.connect(self._dnsResolve)
@@ -36,3 +36,13 @@ class MyWindowsDNS(QtWidgets.QWidget,Ui_FormDNS):
 
         except dns.resolver.NoAnswer:
             QtWidgets.QMessageBox.warning(self,'错误提示','域名:{0}\nDNS无响应',QtWidgets.QMessageBox.Cancel)
+
+        finally:
+            pass
+
+
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    win = MyWindowsDNS()
+    win.show()
+    sys.exit(app.exec())
