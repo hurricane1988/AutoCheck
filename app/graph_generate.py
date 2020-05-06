@@ -79,8 +79,8 @@ osVersionPip = (
     .add(
         "",
         osVersion(),
-        radius=["55", "40%"],
-        center=["38%", "28%"],
+        radius=["60", "40%"],      # 设置饼图的内环半径
+        center=["33%", "28%"],     # 设置饼图在画面中的位置
         label_opts=opts.LabelOpts(
             position="outside",
             #formatter="{a|{a}}{abg|}\n{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
@@ -114,10 +114,11 @@ osVersionPip = (
             },
         ),
     )
-    #.set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
+    # .set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
     .set_global_opts(
-        #title_opts=opts.TitleOpts(title="Pie-Legend 滚动"),
-        legend_opts=opts.LegendOpts(type_="scroll",  pos_left="85%",orient="vertical"),
+        title_opts=opts.TitleOpts(subtitle="[系统版本比例饼图]"),
+        toolbox_opts=opts.ToolboxOpts(),
+        legend_opts=opts.LegendOpts(pos_left="72%",orient="vertical"),
     )
     #.render("./templates/osVersionPip.html")
 )
@@ -127,8 +128,8 @@ dbVersionPip = (
     .add(
         "",
         dbVersionPIP(),
-        radius=["55", "40%"],
-        center=["38%", "80%"],
+        radius=["60", "40%"],
+        center=["33%", "80%"],
         label_opts=opts.LabelOpts(
             position="outside",
             #formatter="{a|{a}}{abg|}\n{hr|}\n {b|{b}: }{c}  {per|{d}%}  ",
@@ -164,17 +165,17 @@ dbVersionPip = (
     )
     #.set_global_opts(title_opts=opts.TitleOpts(title="操作系统版本信息"))
     .set_global_opts(
-        #title_opts=opts.TitleOpts(title="系统版本饼图",pos_top="65%", pos_left="1%"),
-        legend_opts=opts.LegendOpts(type_="scroll", pos_top="65%" ,pos_left="85%",orient="vertical",is_show=True),
+        title_opts=opts.TitleOpts(subtitle="[数据库类型饼图]", pos_top="60%"),
+        legend_opts=opts.LegendOpts(pos_top="65%" ,pos_left="72%",orient="vertical",is_show=True),
     )
     #.render("./templates/osVersionPip.html")
 )
 
 
 grid = (
-    Grid()
-    .add(dbVersionPip, grid_opts=opts.GridOpts(pos_bottom="10%"))
-    .add(osVersionPip, grid_opts=opts.GridOpts(pos_top="60%"))
+    Grid(init_opts=opts.InitOpts(width="1200px",height="450px",theme="white",bg_color="red"))
+    .add(dbVersionPip, grid_opts=opts.GridOpts(pos_top="20%"))
+    .add(osVersionPip, grid_opts=opts.GridOpts(pos_top="70%"))
     .render("./templates/grid_horizontal.html")
 )
 
