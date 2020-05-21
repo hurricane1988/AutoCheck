@@ -171,7 +171,6 @@ dbVersionPip = (
     #.render("./templates/osVersionPip.html")
 )
 
-
 grid = (
     Grid(init_opts=opts.InitOpts(width="1200px",height="450px",theme="white",bg_color="red"))
     .add(dbVersionPip, grid_opts=opts.GridOpts(pos_top="20%"))
