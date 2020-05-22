@@ -51,7 +51,7 @@ for line in osType():
             .set_global_opts(
             title_opts={"操作系统类型图": "Bar-通过 dict 进行配置", "subtext": "我也是通过 dict 进行配置的"}
         )
-            .render("bar_base_dict_config.html")
+            .render("./templates/bar_base_dict_config.html")
     )
 
 
