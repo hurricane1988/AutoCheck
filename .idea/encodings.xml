@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/2020-04-29-14-29-25-servers.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ulimitCheck/系统内核参数检查结果.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ulimitCheck/长春公积金管理中心内核参数检查结果.csv" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/ulimitCheck/阿里云环境内核参数检查结果.csv" charset="GBK" />
   </component>
 </project>
