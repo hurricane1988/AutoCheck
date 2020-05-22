@@ -1,4 +1,5 @@
 # 系统ulimit参数检查工具使用
+[[官方说明]](https://www.thegeekdiary.com/linux-interview-questions-open-files-open-file-descriptors/)
 ## 1. 工具套件
 
 - UlimitCheck.exe 自行主程序工具
