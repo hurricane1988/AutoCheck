@@ -84,7 +84,7 @@ def call_kernel_check(hostfile='checkhosts.csv'):
             writer = csv.writer(file, dialect='excel')
             writer.writerow(['检查时间','中心名称','IP地址', '操作系统版本', '主机名称','当前用户','单进程最大句柄数', '单用户最大进程数','巡检人员','用途'])
             try:
-                reader = csv.DictReader(open(file=hostfile, encoding='gbk'))
+                reader = csv.DictReader(open(file=hostfile, encoding='utf-8'))
                 for row in reader:
                     site = row['site']
                     host = row['host']

@@ -1,1 +1,5 @@
 site,host,port,user,password,operator,description
+#长春公积金管理中心,172.29.30.195,22,root,system,牛建平,Oracle核心数据库
+阿里云环境,47.92.135.119,818,osadmin,Hxyd2019@123,韩宝付,Kubernetes
+阿里云K8S环境,47.92.99.118,818,osadmin,Hxyd2019@123,韩宝付,Kubernetes Master
+长春测试环境,172.29.11.202,818,bspdev05,bspdev05,矫维,db2数据库
