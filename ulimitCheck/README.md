@@ -4,7 +4,11 @@
 - UlimitCheck.exe 自行主程序工具
 - checkhosts.csv 配置文件
 
-## 2. 配置文件checkhosts.csv解读
+## 2. 工具运行系统环境
+- Windows7/10 32位
+- Windows7/10 64位
+
+## 3. 配置文件checkhosts.csv解读
 
 |序号|字段名|说明|备注|
 | --- | --- | --- | --- |
@@ -16,7 +20,7 @@
 |6|operator|检查运维人员姓名||
 |7|description|该主机用途描述|如"BSP DB2核心数据库服务器"|
 
-## 3. 执行方法
+## 4. 执行方法
 将UlimitCheck.exe和checkhosts.csv放在同一目录下，双击执行UlimitCheck.exe程序，执行结束后会生产如下文件:
 
 - log/systeminfo.log 日志文件
