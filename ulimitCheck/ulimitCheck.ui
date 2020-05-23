@@ -73,7 +73,8 @@ background-color: white;</string>
     <property name="styleSheet">
      <string notr="true">border-radius:5px;
 font: 75 11pt &quot;微软雅黑&quot;;
-background-color: gold;</string>
+background-color: gold;
+selection-background-color: rgb(170, 255, 127);</string>
     </property>
     <property name="text">
      <string>开始检查</string>
@@ -113,7 +114,7 @@ background-color: white;</string>
     <property name="title">
      <string/>
     </property>
-    <widget class="QCheckBox" name="checkBoxCheck">
+    <widget class="QCheckBox" name="checkBoxUlimit">
      <property name="geometry">
       <rect>
        <x>10</x>

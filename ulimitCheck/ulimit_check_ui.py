@@ -35,7 +35,8 @@ class Ui_ulimitCheck(object):
         self.pushButtonOK.setGeometry(QtCore.QRect(110, 190, 81, 23))
         self.pushButtonOK.setStyleSheet("border-radius:5px;\n"
 "font: 75 11pt \"微软雅黑\";\n"
-"background-color: gold;")
+"background-color: gold;\n"
+"selection-background-color: rgb(170, 255, 127);")
         self.pushButtonOK.setObjectName("pushButtonOK")
         self.pushButtonCance = QtWidgets.QPushButton(self.groupBoxOutside)
         self.pushButtonCance.setGeometry(QtCore.QRect(430, 190, 75, 23))
@@ -49,9 +50,9 @@ class Ui_ulimitCheck(object):
 "background-color: white;")
         self.groupBoxInside.setTitle("")
         self.groupBoxInside.setObjectName("groupBoxInside")
-        self.checkBoxCheck = QtWidgets.QCheckBox(self.groupBoxInside)
-        self.checkBoxCheck.setGeometry(QtCore.QRect(10, 10, 91, 16))
-        self.checkBoxCheck.setObjectName("checkBoxCheck")
+        self.checkBoxUlimit = QtWidgets.QCheckBox(self.groupBoxInside)
+        self.checkBoxUlimit.setGeometry(QtCore.QRect(10, 10, 91, 16))
+        self.checkBoxUlimit.setObjectName("checkBoxUlimit")
 
         self.retranslateUi(ulimitCheck)
         QtCore.QMetaObject.connectSlotsByName(ulimitCheck)
@@ -63,5 +64,5 @@ class Ui_ulimitCheck(object):
         self.labelCheck.setText(_translate("ulimitCheck", "选项检查"))
         self.pushButtonOK.setText(_translate("ulimitCheck", "开始检查"))
         self.pushButtonCance.setText(_translate("ulimitCheck", "点击取消"))
-        self.checkBoxCheck.setText(_translate("ulimitCheck", "ulimit参数"))
+        self.checkBoxUlimit.setText(_translate("ulimitCheck", "ulimit参数"))
 

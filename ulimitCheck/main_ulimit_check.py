@@ -8,6 +8,7 @@ import time
 import logging
 import os
 import threading
+from PyQt5 import QtCore, QtWidgets
 from paramiko import SSHClient
 from paramiko import AutoAddPolicy
 from logging.handlers import TimedRotatingFileHandler
@@ -121,11 +122,32 @@ def call_kernel_check(hostfile='checkhosts.csv'):
             file.close()
 
 
+# 定义UI工作线程类.
+class ulimitworkThread(QtCore.QThread,QtWidgets.QWidget):
+    finshSignal = QtCore.pyqtSignal(object)                                 # 自定义信号finshSignal
+
+    def __init__(self, parent=None):
+        super(ulimitworkThread, self).__init__(parent)
+
+# 定义多线程执行主函数.
+    def run(self):
+        t = threading.Thread(target=call_kernel_check, name='多线程检查执行')
+        t.start()
+        t.join()
+        self.finshSignal.emit("ulimit检查结束")
+        self.finshSignal.connect(self.resutl_notice)
+
+    def resutl_notice(self):
+        QtWidgets.QMessageBox.information(self,'消息提示','系统ulimit检查结束',QtWidgets.QMessageBox.Ok)
+
+
 if __name__ == '__main__':
+    ulimitworkThread().run()
+
+    """ 
     t = threading.Thread(target=call_kernel_check, name='多线程检查执行')  # 将主函数拉入多线程中
     t.start()                                                           # 启动多线程
     t.join()                                                            # 线程同步,即主线程任务结束之后,进入阻塞状态,一直等待其他的子线程执行结束之后,主线程在终止
-    """
     from time import time
     for i in range(10):
         t1 = time()                                                     # 定义t1执行开始时间
@@ -134,6 +156,6 @@ if __name__ == '__main__':
         t.join()
         # call_kernel_check()
         t2 = time()                                                     # 定义t2执行结束时间
-        print(f"耗时:{t2 -t1}秒")                                        # 打印整个程序执行时间 
+        print('序号:{0}'.format(i) +' '+ f"耗时:{t2 - t1}秒")             # 打印整个程序执行时间 
     """
 
