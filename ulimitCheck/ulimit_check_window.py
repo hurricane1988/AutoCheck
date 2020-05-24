@@ -11,7 +11,7 @@
 import sys
 from PyQt5 import QtGui,QtCore,QtWidgets
 from ulimit_check_ui import Ui_ulimitCheck
-from main_ulimit_check import ulimitworkThread
+from main_ulimit_check import ulimitworkThread, ulimitCheckSlot
 
 
 # 定义主窗口类.
@@ -22,10 +22,12 @@ class checkWindow(QtWidgets.QWidget, Ui_ulimitCheck,QtCore.QThread):
 
         self.setupUi(self)
         self.setFixedSize(585, 239)
-        self.setWindowIcon(QtGui.QIcon("login.ico"))
+        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)                  # 设置无边框窗口
+        # self.setWindowIcon(QtGui.QIcon("login.ico"))
 
-        self.work_thread = ulimitworkThread()                              # 初始化线程函数
-        self.pushButtonOK.clicked.connect(self.ulimit_thread_slot)         # 信号与槽函数绑定
+        self.work_thread = ulimitworkThread()                                # 初始化线程函数
+        self.ulimit_check_slot = ulimitCheckSlot()
+        self.pushButtonOK.clicked.connect(self.ulimit_thread_slot)           # 信号与槽函数绑定
         self.pushButtonCance.clicked.connect(self.close)
 
     # 带有启动线程的槽函数.
@@ -33,6 +35,7 @@ class checkWindow(QtWidgets.QWidget, Ui_ulimitCheck,QtCore.QThread):
         if self.checkBoxUlimit.isChecked():
             self.pushButtonOK.setEnabled(True)                                # 开始按钮不可点击
             self.work_thread.start()                                          # 线程开始
+            self.work_thread.finshSignal.connect(self.ulimit_check_slot.resutl_notice)
         else:
             QtWidgets.QMessageBox.warning(self,'提示信息','请勾选检查项',QtWidgets.QMessageBox.Ok)
 

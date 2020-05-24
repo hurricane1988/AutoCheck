@@ -60,6 +60,7 @@ class Ui_ulimitCheck(object):
     def retranslateUi(self, ulimitCheck):
         _translate = QtCore.QCoreApplication.translate
         ulimitCheck.setWindowTitle(_translate("ulimitCheck", "系统内核参数检查"))
+        ulimitCheck.setWindowIcon(QtGui.QIcon("login.ico"))
         self.groupBoxOutside.setTitle(_translate("ulimitCheck", "系统内核参数检查工具"))
         self.labelCheck.setText(_translate("ulimitCheck", "选项检查"))
         self.pushButtonOK.setText(_translate("ulimitCheck", "开始检查"))

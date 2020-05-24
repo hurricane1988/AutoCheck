@@ -9,6 +9,7 @@ import logging
 import os
 import threading
 from PyQt5 import QtCore, QtWidgets
+from ulimit_check_ui import Ui_ulimitCheck
 from paramiko import SSHClient
 from paramiko import AutoAddPolicy
 from logging.handlers import TimedRotatingFileHandler
@@ -123,7 +124,7 @@ def call_kernel_check(hostfile='checkhosts.csv'):
 
 
 # 定义UI工作线程类.
-class ulimitworkThread(QtCore.QThread,QtWidgets.QWidget):
+class ulimitworkThread(QtCore.QThread, QtWidgets.QWidget, QtCore.QObject):
     finshSignal = QtCore.pyqtSignal(object)                                 # 自定义信号finshSignal
 
     def __init__(self, parent=None):
@@ -135,10 +136,19 @@ class ulimitworkThread(QtCore.QThread,QtWidgets.QWidget):
         t.start()
         t.join()
         self.finshSignal.emit("ulimit检查结束")
-        self.finshSignal.connect(self.resutl_notice)
+        # self.finshSignal.connect(self.resutl_notice)
+
+
+# 定义检查结束Slot槽函数.
+class ulimitCheckSlot(QtWidgets.QWidget,Ui_ulimitCheck, QtCore.QObject):
+
+    def __init__(self, parent=None):
+        super(ulimitCheckSlot, self).__init__(parent)
+        #self.setupUi(self)
 
     def resutl_notice(self):
-        QtWidgets.QMessageBox.information(self,'消息提示','系统ulimit检查结束',QtWidgets.QMessageBox.Ok)
+        result_path = os.getcwd()
+        QtWidgets.QMessageBox.information(self,'消息提示','状态: 系统ulimit检查结束\n检查结果存放路径: {0}\系统内核参数检查结果.csv'.format(result_path),QtWidgets.QMessageBox.Ok)
 
 
 if __name__ == '__main__':
