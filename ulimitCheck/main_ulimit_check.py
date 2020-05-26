@@ -129,18 +129,26 @@ class ulimitworkThread(QtCore.QThread, QtWidgets.QWidget, QtCore.QObject):
 
     def __init__(self, parent=None):
         super(ulimitworkThread, self).__init__(parent)
+        self.flag = 1
 
 # 定义多线程执行主函数.
     def run(self):
-        t = threading.Thread(target=call_kernel_check, name='多线程检查执行')
-        t.start()
-        t.join()
-        self.finshSignal.emit("ulimit检查结束")
+            t = threading.Thread(target=call_kernel_check, name='多线程检查执行')
+            t.start()
+            t.join()
+            # print('当前线程ID {0}'.format(QtCore.QThread.currentThreadId()))
+            self.finshSignal.emit("ulimit检查结束")
         # self.finshSignal.connect(self.resutl_notice)
 
+# 定义多线程退出函数.
+    def stop(self):
+        self.flag = 0
+        print('线程退出')
 
+
+"""
 # 定义检查结束Slot槽函数.
-class ulimitCheckSlot(QtWidgets.QWidget,Ui_ulimitCheck, QtCore.QObject):
+class ulimitCheckSlot(QtWidgets.QWidget, QtCore.QObject):
 
     def __init__(self, parent=None):
         super(ulimitCheckSlot, self).__init__(parent)
@@ -149,6 +157,7 @@ class ulimitCheckSlot(QtWidgets.QWidget,Ui_ulimitCheck, QtCore.QObject):
     def resutl_notice(self):
         result_path = os.getcwd()
         QtWidgets.QMessageBox.information(self,'消息提示','状态: 系统ulimit检查结束\n检查结果存放路径: {0}\系统内核参数检查结果.csv'.format(result_path),QtWidgets.QMessageBox.Ok)
+"""
 
 
 if __name__ == '__main__':
@@ -156,16 +165,16 @@ if __name__ == '__main__':
 
     """ 
     t = threading.Thread(target=call_kernel_check, name='多线程检查执行')  # 将主函数拉入多线程中
-    t.start()                                                           # 启动多线程
-    t.join()                                                            # 线程同步,即主线程任务结束之后,进入阻塞状态,一直等待其他的子线程执行结束之后,主线程在终止
+    t.start()                                                            # 启动多线程
+    t.join()                                                             # 线程同步,即主线程任务结束之后,进入阻塞状态,一直等待其他的子线程执行结束之后,主线程在终止
     from time import time
     for i in range(10):
-        t1 = time()                                                     # 定义t1执行开始时间
+        t1 = time()                                                      # 定义t1执行开始时间
         t = threading.Thread(target=call_kernel_check, name='LoopThread')
         t.start()
         t.join()
         # call_kernel_check()
-        t2 = time()                                                     # 定义t2执行结束时间
-        print('序号:{0}'.format(i) +' '+ f"耗时:{t2 - t1}秒")             # 打印整个程序执行时间 
+        t2 = time()                                                      # 定义t2执行结束时间
+        print('序号:{0}'.format(i) +' '+ f"耗时:{t2 - t1}秒")              # 打印整个程序执行时间 
     """
 
