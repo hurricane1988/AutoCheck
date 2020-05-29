@@ -9,8 +9,10 @@
 
 
 import sys,re
-from PyQt5.QtGui import QIcon
+import base64
 from PyQt5.QtCore import Qt,QUrl
+from PyQt5 import QtGui
+from images.image import logo
 from PyQt5.QtSql import QSqlQueryModel
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QDesktopWidget,QHeaderView,QTableView
 from mainwindow import Ui_MainWindow
@@ -32,7 +34,12 @@ class MyMainWindow(QMainWindow,Ui_MainWindow):
         super(MyMainWindow, self).__init__(parent)
 
         self.setWindowTitle('自助巡检GUI工具')
-        self.setWindowIcon(QIcon('login.ico'))
+        icon = QtGui.QIcon()
+        logo_image = base64.b16decode(logo)
+        Pixmap = QtGui.QPixmap()
+        Pixmap.loadFromData(logo_image)
+        icon.addPixmap(Pixmap, QtGui.QIcon.Normal,QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
         #self.setFixedSize()
         # 窗口显示居中主函数
         self._center()
