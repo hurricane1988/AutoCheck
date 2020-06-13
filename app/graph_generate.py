@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 from pyecharts import options as opts
 from pyecharts.charts import Bar, Grid, Line, Pie
 from Configuration import *
+
+
+# 创建templates目录.
+if not os.path.exists('templates'):
+    os.makedirs('templates')
 
 # 获取SQLite3数据库中的操作系统版本.
 def getVersionNumber(osversion):
@@ -179,4 +185,5 @@ grid = (
 )
 
 def mainpip():
+
     grid
